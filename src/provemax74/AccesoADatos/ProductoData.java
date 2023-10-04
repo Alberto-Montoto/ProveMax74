@@ -23,10 +23,6 @@ public class ProductoData {
         con = Conexion.getConexion();
     }
 
-    public ProductoData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /////////////////// agregar un producto a la base de datos 
     public void agregarProducto(Producto producto) {
 
@@ -82,4 +78,35 @@ public class ProductoData {
 
         }
     }
+    
+        public void modificarProducto(Producto producto) {
+        String sql = "UPDATE producto SET nombreProducto=?, descripcion=?, precioActual=?, stock=?, estado=?"
+                + "WHERE idproducto=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, producto.getNombreProducto());
+            ps.setString(2, producto.getDescripcion());
+            ps.setDouble(3, producto.getPrecioActual());
+            ps.setInt(4, producto.getStock());
+            ps.setBoolean(5,producto.estado());
+            ps.setInt(6, producto.getIdProducto());
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "producto modificado");
+            }
+            
+            
+          ps.close();
+          
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto desde el metodo modificarProducto" + ex.getMessage());
+        }
+
+       
+      }
+        
 }
