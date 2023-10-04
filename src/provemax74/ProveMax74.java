@@ -1,21 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package provemax74;
 
-/**
- *
- * @author maria
- */
+import org.mariadb.jdbc.Connection;
+import provemax74.AccesoADatos.Conexion;
+import provemax74.AccesoADatos.ProductoData;
+import provemax74.Entidades.Producto;
+
 public class ProveMax74 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // TODO code application logic here
+
+        Connection con = Conexion.getConexion();
+        
+        //////metodo agregarProducto//////
+//                                   idpro/nombrePro/descripcion/precioAct/Stok/estado
+        Producto arroz = new Producto(333, "azucar", "morena", 1000, 50, true);
+        ProductoData pro = new ProductoData(con);
+
+        pro.agregarProducto(arroz);
     }
-    
 }

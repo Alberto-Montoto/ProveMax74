@@ -12,7 +12,7 @@ import java.sql.*;
 public class Conexion {
     
 private static final String URL="jdbc:mariadb://localhost/";
-private static final String DB="universidadgrupo74";
+private static final String DB="ProveMax74";
 private static final String USUARIO="root";
 private static final String PASSWORD="";
 private static Connection connection;

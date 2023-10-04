@@ -13,6 +13,8 @@ public class Producto {
     private int stock;
 
     private boolean estado;
+    
+
 
     public Producto(int idProducto, String nombreProducto, String descripcion, double precioActual, int stock, boolean estado) {
         this.idProducto = idProducto;
@@ -66,16 +68,16 @@ public class Producto {
         this.stock = stock;
     }
 
-    public boolean isEstado() {
+    public boolean estado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setestado(boolean estado) {
         this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Producto{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", descripcion=" + descripcion + ", precioActual=" + precioActual + ", stock=" + stock + ", estado=" + estado + '}';
+        return "Producto{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", descripcion=" + descripcion + ", precioActual=" + precioActual + ", stock=" + stock + ", estado=" + estado +'}';
     }
 }
