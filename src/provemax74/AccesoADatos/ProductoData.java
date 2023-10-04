@@ -15,12 +15,12 @@ import provemax74.Entidades.Producto;
 import provemax74.Entidades.Proveedor;
 
 public class ProductoData {
-    private Connection con = null;
 
+    private Connection con = null;
 
     public ProductoData(Connection conexion) {
 
-         con = Conexion.getConexion();
+        con = Conexion.getConexion();
     }
 
     public ProductoData() {
@@ -34,7 +34,7 @@ public class ProductoData {
                 + "VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
-             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, producto.getIdProducto());
             ps.setString(2, producto.getNombreProducto());
@@ -60,5 +60,26 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al guardar el producto" + ex.getMessage());
         }
 
+    }
+
+    /////////////////// metodo eliminar un producto por id
+    public void eliminarProducto(int id) {
+        String sql = "UPDATE producto set estado = 0 WHERE idProducto=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "El producto ha sido eliminado");
+            } else {
+                JOptionPane.showMessageDialog(null, "El producto no existe");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto" + ex.getMessage());
+
+        }
     }
 }

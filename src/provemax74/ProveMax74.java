@@ -17,6 +17,16 @@ public class ProveMax74 {
         Producto arroz = new Producto(333, "azucar", "morena", 1000, 50, true);
         ProductoData pro = new ProductoData(con);
 
-        pro.agregarProducto(arroz);
+//        pro.agregarProducto(arroz);
+        
+        //////metodo eliminarProducto////// 
+                pro.eliminarProducto(333);
+        
+        
     }
 }
+        //Alumno mariana=new Alumno(6,43253000,"Gonzalez","Mario",LocalDate.of(2010, 3, 15),true);
+        // AlumnoData alu = new AlumnoData();
+        //alu.guardarAlumno(mariana);
+        //alu.modificarAlumno(mariana);
+        //alu.eliminarAlumno(3);
