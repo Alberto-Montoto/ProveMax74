@@ -80,8 +80,8 @@ public class ProductoData {
     }
     
         public void modificarProducto(Producto producto) {
-        String sql = "UPDATE producto SET nombreProducto=?, descripcion=?, precioActual=?, stock=?, estado=?"
-                + "WHERE idproducto=?";
+        String sql = "UPDATE producto SET nombreProducto=?, descripcion=?, precioActual=?, stock=?, estado=? "
+                + " WHERE idproducto=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);

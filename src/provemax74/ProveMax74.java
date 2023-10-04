@@ -14,7 +14,7 @@ public class ProveMax74 {
         
         //////metodo agregarProducto//////
 //                                   idpro/nombrePro/descripcion/precioAct/Stok/estado
-        Producto arroz = new Producto( "azucar", "morena", 10, 50, true);
+        Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
         ProductoData pro = new ProductoData(con);
 
 //        pro.agregarProducto(arroz);
