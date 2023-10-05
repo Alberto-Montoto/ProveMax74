@@ -11,4 +11,5 @@ package provemax74.AccesoADatos;
  */
 public class CompraData {
     
+    
 }

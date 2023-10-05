@@ -3,6 +3,8 @@ package provemax74.Entidades;
 public class Proveedor {
 
     private int idProveedor;
+    
+    private String nombreCompleto;
 
     private String razonSocial;
 
@@ -15,7 +17,8 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int idProveedor, String razonSocial, String domicilio, String telefono) {
+    public Proveedor(int idProveedor, String nombreCompleto, String razonSocial, String domicilio, String telefono) {
+        this.nombreCompleto=nombreCompleto;
         this.idProveedor = idProveedor;
         this.razonSocial = razonSocial;
         this.domicilio = domicilio;
@@ -26,9 +29,17 @@ public class Proveedor {
     public int getIdProveedor() {
         return idProveedor;
     }
-
+    
     public void setIdProveedor(int idProveedor) {
         this.idProveedor = idProveedor;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public String getRazonSocial() {
@@ -53,6 +64,11 @@ public class Proveedor {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    @Override
+    public String toString() {
+        return "Proveedor{" + "idProveedor=" + idProveedor + ", nombreCompleto=" + nombreCompleto + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono + ", compra=" + compra + '}';
     }
 
     
