@@ -34,34 +34,43 @@ public class ProveMax74 {
              //   pro.modificarProducto(arroz);
 
 //              pro.modificarProducto(arroz);
-              
-          Proveedor prove=new Proveedor(1,"Wachoski","Electro Mayor","Juan B Justo","011123456");
-          ProveedorData proveData=new ProveedorData();
-          
-          //proveData.guardarProveedor(prove);
-          
-          proveData.modificarProveedor(prove);
-          
-          proveData.eliminarProveedor(1);
-          
-          
-        
 
-        
+
         //////metodo obtenerProducto////// 
-              Producto obtenerProducto =pro.obtenerProducto(111);
-               if (obtenerProducto!=null) {    
-        System.out.println("nombreProducto " + obtenerProducto.getNombreProducto());
-        System.out.println("descripcion "+ obtenerProducto.getDescripcion());
-        }
-              
-        //Alumno alumnoEncontrado=alu.buscarAlumno(1);
-//        if (alumnoEncontrado!=null) {    
-//        System.out.println("DNI "+ alumnoEncontrado.getDni());
-//        System.out.println("Apellido "+alumnoEncontrado.getApellido());
+//              Producto obtenerProducto =pro.obtenerProducto(111);
+//               if (obtenerProducto!=null) {    
+//        System.out.println("nombreProducto " + obtenerProducto.getNombreProducto());
+//        System.out.println("descripcion "+ obtenerProducto.getDescripcion());
+//        }
+             
+        //////metodo listarProductos////// 
+                 for (Producto producto: pro.listarProducotos()) {
+            System.out.println("idProducto: " + producto.getIdProducto());
+            System.out.println("nombreProducto: " + producto.getNombreProducto());
+            System.out.println("descripcion: " + producto.getDescripcion());
+            System.out.println("precioActual: " + producto.getPrecioActual());
+            System.out.println("stock: " + producto.getStock());
+            System.out.println("------------------------------");
+        }  
+                 
+                 //        for (Alumno alumno: alu.listarAlumnos()) {
+//            System.out.println("DNI: " + alumno.getDni());
+//            System.out.println("Apellido: " + alumno.getApellido());
+//            System.out.println("Nombre: " + alumno.getNombre());
+//            System.out.println("Fecha de Nacimiento: " + alumno.getFechaNacimiento());
+//            System.out.println("------------------------------");
 //        }
               
-              
+//          Proveedor prove=new Proveedor(1,"Wachoski","Electro Mayor","Juan B Justo","011123456");
+//          ProveedorData proveData=new ProveedorData();
+//          
+//          //proveData.guardarProveedor(prove);
+//          
+//          proveData.modificarProveedor(prove);
+//          
+//          proveData.eliminarProveedor(1);
+//              
+//              
     }
 }
 

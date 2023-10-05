@@ -104,7 +104,8 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto desde el metodo modificarProducto" + ex.getMessage());
         }
     }
-    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// metodo obtener un producto
+
     public Producto obtenerProducto(int id) {
         String sql = "SELECT nombreProducto, descripcion, precioActual, stock FROM producto WHERE idProducto=? AND estado = 1 ";
         Producto producto = null;
@@ -112,7 +113,7 @@ public class ProductoData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 producto = new Producto();
                 producto.setIdProducto(id);
@@ -125,43 +126,43 @@ public class ProductoData {
                 JOptionPane.showMessageDialog(null, "No existe un producto con ese ID");
             }
             ps.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto desde obtenerProducto");
         }
         return producto;
     }
 
-    
-//       public Alumno buscarAlumno(int id){
-//    
-//        String sql = "SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado = 1";
-//            Alumno alumno = null;
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, id);
-//            ResultSet rs = ps.executeQuery();
-//                
-//            if (rs.next()) {
-//                alumno = new Alumno();
-//                alumno.setIdAlumno(id);
-//                alumno.setDni (rs.getInt("dni"));
-//                alumno.setApellido(rs.getString("apellido"));
-//                alumno.setNombre(rs.getString("nombre"));
-//                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-//                alumno.setEstado(true);
-//            }else{
-//                JOptionPane.showMessageDialog(null, "No existe un alumno con ese ID");
-//            }
-//            ps.close();
-//            
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
-//        }
-//        return alumno;
-//    }
-    
-    
-    
-    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// metodo listar los productos 
+    public List<Producto> listarProducotos() {
+
+        String sql = "SELECT idProducto, nombreProducto, descripcion, precioActual, stock FROM producto WHERE estado = 1 ";
+        ArrayList<Producto> productos = new ArrayList<>();
+
+        try {
+            PreparedStatement ps;
+            ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombreProducto(rs.getNString("nombreProducto"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setestado(true);
+
+                productos.add(producto);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
+        }
+        return productos;
+
+    }
+
 }
