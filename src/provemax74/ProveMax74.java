@@ -14,7 +14,7 @@ public class ProveMax74 {
         
         //////metodo agregarProducto//////
 //                                   idpro/nombrePro/descripcion/precioAct/Stok/estado
-        Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
+        Producto arroz = new Producto(111, "azucar", "morena", 123, 50, true);
         ProductoData pro = new ProductoData(con);
 
 //        pro.agregarProducto(arroz);
@@ -23,13 +23,21 @@ public class ProveMax74 {
               //  pro.eliminarProducto(333);
         
         //////metodo modificarProducto////// 
-              pro.modificarProducto(arroz);
+             //   pro.modificarProducto(arroz);
         
-        
+        //////metodo obtenerProducto////// 
+              Producto obtenerProducto =pro.obtenerProducto(111);
+               if (obtenerProducto!=null) {    
+        System.out.println("nombreProducto " + obtenerProducto.getNombreProducto());
+        System.out.println("descripcion "+ obtenerProducto.getDescripcion());
+        }
+              
+        //Alumno alumnoEncontrado=alu.buscarAlumno(1);
+//        if (alumnoEncontrado!=null) {    
+//        System.out.println("DNI "+ alumnoEncontrado.getDni());
+//        System.out.println("Apellido "+alumnoEncontrado.getApellido());
+//        }
+              
+              
     }
 }
-        //Alumno mariana=new Alumno(6,43253000,"Gonzalez","Mario",LocalDate.of(2010, 3, 15),true);
-        // AlumnoData alu = new AlumnoData();
-        //alu.guardarAlumno(mariana);
-        //alu.modificarAlumno(mariana);
-        //alu.eliminarAlumno(3);

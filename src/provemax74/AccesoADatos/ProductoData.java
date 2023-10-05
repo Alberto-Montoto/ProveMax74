@@ -23,7 +23,7 @@ public class ProductoData {
         con = Conexion.getConexion();
     }
 
-    /////////////////// agregar un producto a la base de datos 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// agregar un producto a la base de datos 
     public void agregarProducto(Producto producto) {
 
         String sql = "INSERT INTO Producto (idProducto, NombreProducto, Descripcion, PrecioActual, Stock, estado ) "
@@ -58,7 +58,7 @@ public class ProductoData {
 
     }
 
-    /////////////////// metodo eliminar un producto por id
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// metodo eliminar un producto por id
     public void eliminarProducto(int id) {
         String sql = "UPDATE producto set estado = 0 WHERE idProducto=?";
 
@@ -78,11 +78,11 @@ public class ProductoData {
 
         }
     }
-    
-        public void modificarProducto(Producto producto) {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// metodomodificar un producto
+
+    public void modificarProducto(Producto producto) {
         String sql = "UPDATE producto SET nombreProducto=?, descripcion=?, precioActual=?, stock=?, estado=? "
                 + " WHERE idproducto=?";
-
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -90,7 +90,7 @@ public class ProductoData {
             ps.setString(2, producto.getDescripcion());
             ps.setDouble(3, producto.getPrecioActual());
             ps.setInt(4, producto.getStock());
-            ps.setBoolean(5,producto.estado());
+            ps.setBoolean(5, producto.estado());
             ps.setInt(6, producto.getIdProducto());
 
             int exito = ps.executeUpdate();
@@ -98,15 +98,70 @@ public class ProductoData {
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "producto modificado");
             }
-            
-            
-          ps.close();
-          
+            ps.close();
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto desde el metodo modificarProducto" + ex.getMessage());
         }
+    }
+    
+    public Producto obtenerProducto(int id) {
+        String sql = "SELECT nombreProducto, descripcion, precioActual, stock FROM producto WHERE idProducto=? AND estado = 1 ";
+        Producto producto = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                producto = new Producto();
+                producto.setIdProducto(id);
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setestado(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe un producto con ese ID");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto desde obtenerProducto");
+        }
+        return producto;
+    }
 
-       
-      }
-        
+    
+//       public Alumno buscarAlumno(int id){
+//    
+//        String sql = "SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado = 1";
+//            Alumno alumno = null;
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, id);
+//            ResultSet rs = ps.executeQuery();
+//                
+//            if (rs.next()) {
+//                alumno = new Alumno();
+//                alumno.setIdAlumno(id);
+//                alumno.setDni (rs.getInt("dni"));
+//                alumno.setApellido(rs.getString("apellido"));
+//                alumno.setNombre(rs.getString("nombre"));
+//                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+//                alumno.setEstado(true);
+//            }else{
+//                JOptionPane.showMessageDialog(null, "No existe un alumno con ese ID");
+//            }
+//            ps.close();
+//            
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+//        }
+//        return alumno;
+//    }
+    
+    
+    
+    
 }
