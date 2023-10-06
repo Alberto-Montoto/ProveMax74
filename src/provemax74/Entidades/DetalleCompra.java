@@ -16,16 +16,109 @@ public class DetalleCompra {
 
     private Producto producto;
     
-    public DetalleCompra(int idDetalle, int cantidad, double precioCosto, Compra compra, Producto producto) {
-        this.idDetalle = idDetalle;
-        this.cantidad = cantidad;
-        this.precioCosto = precioCosto;
-        this.compra = compra;
-        this.producto = producto;
-    }
+    private int idProducto;
+    
+    private String nombreProducto;
+    
+//    public DetalleCompra(int idDetalle, int cantidad, double precioCosto, Compra compra, Producto producto) {
+//        this.idDetalle = idDetalle;
+//        this.cantidad = cantidad;
+//        this.precioCosto = precioCosto;
+//        this.compra = compra;
+//        this.producto = producto;
+//    }
 
     public DetalleCompra() {
     }
+
+//    public DetalleCompra(int idDetalle, int cantidad, double precioCosto, String nombreProducto ,int idProducto ) {
+//        this.idDetalle = idDetalle;
+//        this.cantidad = cantidad;
+//        this.precioCosto = precioCosto;
+//        nombreProducto = producto.getNombreProducto();
+//        idProducto = producto.getIdProducto();
+//    }
+
+//    public DetalleCompra(int cantidad, double precioCosto, int idProducto, String nombreProducto) { //, Producto producto
+//        this.cantidad = cantidad;
+//        this.precioCosto = precioCosto;
+//        this.idProducto = idProducto;
+//        this.nombreProducto = nombreProducto;
+////        this.producto = producto;
+//    }
+
+//    public DetalleCompra(int idDetalle, int cantidad, double precioCosto, int idProducto, String nombreProducto) {
+//        this.idDetalle = idDetalle;
+//        this.cantidad = cantidad;
+//        this.precioCosto = precioCosto;
+//        this.idProducto = idProducto;
+//        this.nombreProducto = nombreProducto;
+//    }
+
+    public DetalleCompra(int cantidad, double precioCosto, Producto producto) {
+        this.cantidad = cantidad;
+        this.precioCosto = precioCosto;
+        this.producto = producto;
+    }
+
+    public DetalleCompra(int cantidad, Producto producto) {
+        this.cantidad = cantidad;
+        this.producto = producto;
+    }
+
+//    public DetalleCompra(int idDetalle, int cantidad, double precioCosto, Producto producto) {
+//        this.idDetalle = idDetalle;
+//        this.cantidad = cantidad;
+//        this.precioCosto = precioCosto;
+//        this.producto = producto;
+//    }
+
+    public DetalleCompra(int idDetalle, int cantidad, Producto producto) {
+        this.idDetalle = idDetalle;
+        this.cantidad = cantidad;
+        this.producto = producto;
+    }
+
+    
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+//    public DetalleCompra(int idDetalle, int cantidad, double precioCosto, String nombreProducto) {
+//        this.idDetalle = idDetalle;
+//        this.cantidad = cantidad;
+//        this.precioCosto = precioCosto;
+//        this.nombreProducto = nombreProducto;
+//    }
+
+
+
+    public DetalleCompra(int idDetalle, int cantidad, double precioCosto) {
+        this.idDetalle = idDetalle;
+        this.cantidad = cantidad;
+        this.precioCosto = precioCosto;
+    }
+
+    public DetalleCompra(int cantidad, double precioCosto) {
+        this.cantidad = cantidad;
+        this.precioCosto = precioCosto;
+    }
+
+//    public DetalleCompra(int i, int i0, int i1, String string, int i2) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
     public int getIdDetalle() {
         return idDetalle;

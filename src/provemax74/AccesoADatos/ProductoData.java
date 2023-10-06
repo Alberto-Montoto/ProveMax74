@@ -16,12 +16,22 @@ import provemax74.Entidades.Proveedor;
 
 public class ProductoData {
 
-    private Connection con = null;
+//    private Connection con = null;
+//
+//    public ProductoData(Connection conexion) {
+//
+//        con = Conexion.getConexion();
+//    }
+    private Connection con;
 
-    public ProductoData(Connection conexion) {
-
+    public ProductoData() {
         con = Conexion.getConexion();
     }
+
+    public Connection getCon() {
+        return con;
+    }
+    
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////// agregar un producto a la base de datos 
     public void agregarProducto(Producto producto) {
