@@ -1,5 +1,6 @@
 package provemax74;
 
+import java.util.List;
 import org.mariadb.jdbc.Connection;
 import provemax74.AccesoADatos.Conexion;
 import provemax74.AccesoADatos.ProductoData;
@@ -44,8 +45,13 @@ public class ProveMax74 {
 //            System.out.println("precioActual: " + producto.getPrecioActual());
 //            System.out.println("stock: " + producto.getStock());
 //            System.out.println("------------------------------");
-//        }  
+//        } 
 
+        //////metodo listarProductosStockMinimo////// 
+//          int stockMinimo = 10; 
+//          List<Producto> productos = pro.listarProductosStockMinimo(stockMinimo);        
+
+                 
         ////////////////// Hasta aqui Metodos de productoData ////////////////
         
       

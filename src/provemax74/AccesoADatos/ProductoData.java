@@ -164,5 +164,41 @@ public class ProductoData {
         return productos;
 
     }
+    
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////// metodo listar los productos del stock minimo  
+    public List<Producto> listarProductosStockMinimo(int stockMinimo) {
+        String sql = "SELECT idProducto, nombreProducto, descripcion, precioActual, stock FROM producto WHERE estado = 1 AND stock < ?";
+        ArrayList<Producto> productos = new ArrayList<>();
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, stockMinimo);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Producto producto = new Producto();
+                    producto.setIdProducto(rs.getInt("idProducto"));
+                    producto.setNombreProducto(rs.getString("nombreProducto"));
+                    producto.setDescripcion(rs.getString("descripcion"));
+                    producto.setPrecioActual(rs.getDouble("precioActual"));
+                    producto.setStock(rs.getInt("stock"));
+                    producto.setestado(true);
+
+                    productos.add(producto);
+
+                    System.out.println("Producto agregado al stock minimo: " + producto.getNombreProducto());
+                    System.out.println("idProducto: " + producto.getIdProducto());
+                    System.out.println("descripcion: " + producto.getDescripcion());
+                    System.out.println("precioActual: " + producto.getPrecioActual());
+                    System.out.println("stock: " + producto.getStock());
+                    System.out.println("------------------------------");
+                }
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace(); // Agrega esto para ver si hay excepciones no manejadas
+        }
+
+        return productos;
+    }
 
 }
