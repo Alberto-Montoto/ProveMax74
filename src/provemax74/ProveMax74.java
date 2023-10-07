@@ -3,8 +3,10 @@ package provemax74;
 import java.util.List;
 import org.mariadb.jdbc.Connection;
 import provemax74.AccesoADatos.Conexion;
+import provemax74.AccesoADatos.DetalleCompraData;
 import provemax74.AccesoADatos.ProductoData;
 import provemax74.AccesoADatos.ProveedorData;
+import provemax74.Entidades.DetalleCompra;
 import provemax74.Entidades.Producto;
 import provemax74.Entidades.Proveedor;
 
@@ -17,8 +19,8 @@ public class ProveMax74 {
 
         //////metodo agregarProducto//////
 //                                  idpro/nombreP/descrip/precioAct/Stok/estado
-        Producto arroz = new Producto(111, "azucar", "morena", 123, 50, true);
-        ProductoData pro = new ProductoData(con);
+//        Producto arroz = new Producto(111, "azucar", "morena", 123, 50, true);
+//        ProductoData pro = new ProductoData(con);
 
 //        Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
 //        ProductoData pro = new ProductoData(con);
@@ -66,5 +68,25 @@ public class ProveMax74 {
 //          proveData.eliminarProveedor(1);
 //              
 //              
+
+          //  Llamadas a metodos de DetalleCompra
+
+        //        Producto prod = new Producto(222, "fideos", "tirabuzon", 200, 100, true); //
+        
+        ProductoData proda = new ProductoData();
+        
+        ProductoData prodat = new ProductoData();
+//        prodat.obtenerProducto(1);
+        
+        Producto pro = proda.obtenerProducto(1);
+        
+        DetalleCompra detalle = new DetalleCompra(2, 7, pro); //2, 56, pro.getPrecioActual(), pro.getIdProducto(), pro.getNombreProducto()
+        DetalleCompraData detalleData = new DetalleCompraData();
+        
+//        detalleData.guardarDetalle(detalle);
+//        detalleData.borrarDetalle(3);
+        detalleData.modificarDetalle(detalle);
+        
+
     }
 }
