@@ -10,9 +10,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import provemax74.Entidades.Producto;
 import provemax74.Entidades.Proveedor;
 
 /**
@@ -104,4 +107,29 @@ public class ProveedorData {
         }
     }
     
-}
+    
+    public List<Proveedor> listarProveedor() {
+        List<Proveedor> proveedores = new ArrayList<>();
+
+        String sql = "SELECT idProveedor, nombreCompleto, razonSocial, domicilio, telefono FROM proveedor ";
+
+        try (PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Proveedor pro = new Proveedor();
+                pro.setIdProveedor(rs.getInt("idProveedor"));
+                pro.setNombreCompleto(rs.getString("nombreCompleto"));
+                pro.setRazonSocial(rs.getString("razonSocial"));
+                pro.setDomicilio(rs.getString("domicilio"));
+                pro.setTelefono(rs.getString("telefono"));
+                
+                 proveedores.add(pro);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto"+ ex.getMessage());
+        }
+        return proveedores;
+    }
+    
+
+}  

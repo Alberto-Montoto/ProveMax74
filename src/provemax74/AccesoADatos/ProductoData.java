@@ -158,7 +158,7 @@ public class ProductoData {
             while (rs.next()) {
                 Producto producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
-                producto.setNombreProducto(rs.getNString("nombreProducto"));
+                producto.setNombreProducto(rs.getString("nombreProducto"));
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));

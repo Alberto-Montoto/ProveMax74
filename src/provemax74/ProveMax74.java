@@ -19,8 +19,8 @@ public class ProveMax74 {
 
         //////metodo agregarProducto//////
 //                                  idpro/nombreP/descrip/precioAct/Stok/estado
-//        Producto arroz = new Producto(111, "azucar", "morena", 123, 50, true);
-//        ProductoData pro = new ProductoData(con);
+        Producto arroz = new Producto(111, "azucar", "morena", 123, 50, true);
+        ProductoData pro = new ProductoData();
 
 //        Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
 //        ProductoData pro = new ProductoData(con);
@@ -58,16 +58,26 @@ public class ProveMax74 {
         
       
         
-//          Proveedor prove=new Proveedor(1,"Wachoski","Electro Mayor","Juan B Justo","011123456");
-//          ProveedorData proveData=new ProveedorData();
+          Proveedor prove=new Proveedor();
+          ProveedorData proveData=new ProveedorData();
 //          
 //          //proveData.guardarProveedor(prove);
 //          
 //          proveData.modificarProveedor(prove);
 //          
-//          proveData.eliminarProveedor(1);
-//              
-//              
+//           proveData.eliminarProveedor(1);
+
+        //////metodo listarProveedor////// 
+//        for (Proveedor proveedor : proveData.listarProveedor()) {
+//            System.out.println("idProveedor: " + proveedor.getIdProveedor());
+//            System.out.println("nombreCompleto: " + proveedor.getNombreCompleto());
+//            System.out.println("razonSocial: " + proveedor.getRazonSocial());
+//            System.out.println("domicilio: " + proveedor.getDomicilio());
+//            System.out.println("telefono: " + proveedor.getTelefono());
+//            System.out.println("------------------------------");
+//        }
+           
+//        ////////////////// Hasta aqui Metodos de proveedorData ////////////////              
 
           //  Llamadas a metodos de DetalleCompra
 
@@ -76,17 +86,17 @@ public class ProveMax74 {
         ProductoData proda = new ProductoData();
         
         ProductoData prodat = new ProductoData();
-//        prodat.obtenerProducto(1);
-        
-        Producto pro = proda.obtenerProducto(1);
-        
-        DetalleCompra detalle = new DetalleCompra(2, 7, pro); //2, 56, pro.getPrecioActual(), pro.getIdProducto(), pro.getNombreProducto()
-        DetalleCompraData detalleData = new DetalleCompraData();
-        
-//        detalleData.guardarDetalle(detalle);
-//        detalleData.borrarDetalle(3);
-        detalleData.modificarDetalle(detalle);
-        
+//      prodat.obtenerProducto(1);
+//        
+//        Producto pro = proda.obtenerProducto(1);
+//        
+//        DetalleCompra detalle = new DetalleCompra(2, 7, pro); //2, 56, pro.getPrecioActual(), pro.getIdProducto(), pro.getNombreProducto()
+//        DetalleCompraData detalleData = new DetalleCompraData();
+//        
+//     detalleData.guardarDetalle(detalle);
+//       detalleData.borrarDetalle(3);
+//        detalleData.modificarDetalle(detalle);
+//        
 
     }
-}
+  }
