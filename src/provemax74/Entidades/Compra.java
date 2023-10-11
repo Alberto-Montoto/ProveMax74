@@ -9,6 +9,8 @@ public class Compra {
 
     private Proveedor proveedor;
     
+    private LocalDate fecha;
+    
     private DetalleCompra detalleCompra;
 
     public Compra(int idCompra, Proveedor proveedor, LocalDate fecha, DetalleCompra detalleCompra) {
@@ -16,6 +18,16 @@ public class Compra {
         this.proveedor = proveedor;
         this.fecha = fecha;
         this.detalleCompra = detalleCompra;
+    }
+    
+    public Compra(int idCompra, int idProducto, LocalDate fecha, int cantidad, Proveedor proveedor, DetalleCompra detalleCompra){
+         this.idCompra = idCompra;
+         this.detalleCompra=new DetalleCompra(idProducto);
+         this.fecha = fecha;
+         this.detalleCompra=new DetalleCompra(cantidad);
+         this.proveedor=proveedor;
+         this.detalleCompra=detalleCompra;
+        
     }
 
     public Compra() {
@@ -54,7 +66,7 @@ public class Compra {
         this.fecha = fecha;
     }
 
-    private LocalDate fecha;
+  
 
     @Override
     public String toString() {

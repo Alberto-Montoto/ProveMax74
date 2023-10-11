@@ -1,11 +1,15 @@
 package provemax74;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.mariadb.jdbc.Connection;
+import provemax74.AccesoADatos.CompraData;
 import provemax74.AccesoADatos.Conexion;
 import provemax74.AccesoADatos.DetalleCompraData;
 import provemax74.AccesoADatos.ProductoData;
 import provemax74.AccesoADatos.ProveedorData;
+import provemax74.Entidades.Compra;
 import provemax74.Entidades.DetalleCompra;
 import provemax74.Entidades.Producto;
 import provemax74.Entidades.Proveedor;
@@ -19,8 +23,8 @@ public class ProveMax74 {
 
         //////metodo agregarProducto//////
 //                                  idpro/nombreP/descrip/precioAct/Stok/estado
-        Producto arroz = new Producto(111, "azucar", "morena", 123, 50, true);
-        ProductoData pro = new ProductoData();
+//        Producto arroz = new Producto(111, "azucar", "morena", 123, 50, true);
+//        ProductoData pro = new ProductoData();
 
 //        Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
 //        ProductoData pro = new ProductoData(con);
@@ -58,8 +62,8 @@ public class ProveMax74 {
         
       
         
-          Proveedor prove=new Proveedor();
-          ProveedorData proveData=new ProveedorData();
+//          Proveedor prove=new Proveedor();
+//          ProveedorData proveData=new ProveedorData();
 //          
 //          //proveData.guardarProveedor(prove);
 //          
@@ -83,9 +87,9 @@ public class ProveMax74 {
 
         //        Producto prod = new Producto(222, "fideos", "tirabuzon", 200, 100, true); //
         
-        ProductoData proda = new ProductoData();
-        
-        ProductoData prodat = new ProductoData();
+//        ProductoData proda = new ProductoData();
+//        
+//        ProductoData prodat = new ProductoData();
 //      prodat.obtenerProducto(1);
 //        
 //        Producto pro = proda.obtenerProducto(1);
@@ -96,7 +100,24 @@ public class ProveMax74 {
 //     detalleData.guardarDetalle(detalle);
 //       detalleData.borrarDetalle(3);
 //        detalleData.modificarDetalle(detalle);
-//        
 
+//AGREGAR COMPRAS
+        ProveedorData pd = new ProveedorData();
+        DetalleCompraData dcd = new DetalleCompraData();
+        CompraData cd = new CompraData();
+//        
+        Proveedor prove=pd.buscarProveedor(7);
+        DetalleCompra det=dcd.buscarDetalle(501);
+//        
+//        
+        String fechaString = "11/10/2023";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fecha = LocalDate.parse(fechaString, formatter);
+//        
+        Compra compra=new Compra(1, 111, fecha, 10, prove, det);
+        
+        cd.agregarCompra(compra);
+        
+       
     }
   }

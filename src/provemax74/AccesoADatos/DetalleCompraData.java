@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import provemax74.Entidades.Compra;
 import provemax74.Entidades.DetalleCompra;
@@ -115,9 +117,47 @@ public class DetalleCompraData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectar con la tabla DetalleCompra" + ex.getMessage());
         }
-        
+      
     }
     
+    public DetalleCompra buscarDetalle(int id){
+        
+        String sql="SELECT cantidad, precioCosto, nombreProducto, idProducto FROM detallecompra WHERE idDetalle=?";
+        
+        DetalleCompra detalle=null;
+        
+           try {
+               PreparedStatement ps=con.prepareStatement(sql);
+               
+               ps.setInt(1, id);
+               
+               ResultSet rs=ps.executeQuery();
+               
+               if (rs.next()) {
+                   
+                   detalle=new DetalleCompra();
+                   
+                   detalle.setIdDetalle(id);
+                   detalle.setCantidad(rs.getInt("cantidad"));
+                   detalle.setPrecioCosto(rs.getDouble("precioCosto"));
+                   detalle.setNombreProducto(rs.getString("nombreProducto"));
+                   detalle.setIdProducto(rs.getInt("idProducto"));
+                   
+               } else{
+                   JOptionPane.showMessageDialog(null, "No existe un detalle con ese ID");
+               }
+                
+               ps.close(); 
+               
+           } catch (SQLException ex) {
+               
+               JOptionPane.showMessageDialog(null, "Error al acceder a la tabla detallecompra: "+ex.getMessage());
+           }
+       
+        return detalle;
+    }
+    
+   
     
     
 //    public void modificarDetalle(int idDetalleCompra, int nuevaCantidad, double nuevoPrecio, int nuevoIdProducto, String nuevoNombre) {
