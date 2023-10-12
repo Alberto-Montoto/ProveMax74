@@ -72,11 +72,9 @@ public class Proveedor {
 
     @Override
     public String toString() {
-<<<<<<< Updated upstream
-        return "Proveedor{" + "idProveedor=" + idProveedor + ", nombreCompleto=" + nombreCompleto + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono +  '}'; //", compra=" + compra +
-=======
-        return "Proveedor{" + "idProveedor=" + idProveedor + ", nombreCompleto=" + nombreCompleto + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono + ", compra=" + compra + '}';
->>>>>>> Stashed changes
+
+        return "Proveedor{" + "idProveedor=" + idProveedor + ", nombreCompleto=" + nombreCompleto + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono +  '}'; //", compra=" + compra    
+
     }
 
     

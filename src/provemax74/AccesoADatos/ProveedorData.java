@@ -10,18 +10,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-<<<<<<< Updated upstream
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import provemax74.Entidades.Producto;
-=======
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
->>>>>>> Stashed changes
+
 import provemax74.Entidades.Proveedor;
 
 /**
@@ -113,7 +113,7 @@ public class ProveedorData {
         }
     }
     
-<<<<<<< Updated upstream
+
     public Proveedor buscarProveedor(int id) {
         
         String sql="SELECT nombreCompleto, razonSocial, domicilio, telefono FROM proveedor WHERE idProveedor=?";
@@ -177,6 +177,6 @@ public class ProveedorData {
     
 
 }  
-=======
-}
->>>>>>> Stashed changes
+
+
+

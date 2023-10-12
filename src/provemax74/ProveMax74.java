@@ -9,11 +9,11 @@ import provemax74.AccesoADatos.Conexion;
 import provemax74.AccesoADatos.DetalleCompraData;
 import provemax74.AccesoADatos.ProductoData;
 import provemax74.AccesoADatos.ProveedorData;
-<<<<<<< Updated upstream
+
 import provemax74.Entidades.Compra;
 import provemax74.Entidades.DetalleCompra;
-=======
->>>>>>> Stashed changes
+
+
 import provemax74.Entidades.Producto;
 import provemax74.Entidades.Proveedor;
 
@@ -23,14 +23,12 @@ public class ProveMax74 {
         // TODO code application logic here
 
         Connection con = Conexion.getConexion();
-<<<<<<< Updated upstream
-=======
+
         
         //////metodo agregarProducto//////
 //                                   idpro/nombrePro/descripcion/precioAct/Stok/estado
 //        Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
 //        ProductoData pro = new ProductoData(con);
->>>>>>> Stashed changes
 
         //////metodo agregarProducto//////
 //                                  idpro/nombreP/descrip/precioAct/Stok/estado
@@ -45,23 +43,22 @@ public class ProveMax74 {
         //  pro.eliminarProducto(333);
         
         //////metodo modificarProducto////// 
-<<<<<<< Updated upstream
+
         //   pro.modificarProducto(arroz);
-=======
+
 //              pro.modificarProducto(arroz);
               
-          Proveedor prove=new Proveedor(1,"Wachoski","Electro Mayor","Juan B Justo","011123456");
-          ProveedorData proveData=new ProveedorData();
+          //Proveedor prove=new Proveedor(1,"Wachoski","Electro Mayor","Juan B Justo","011123456");
+         //ProveedorData proveData=new ProveedorData();
           
           //proveData.guardarProveedor(prove);
           
-          proveData.modificarProveedor(prove);
+          //proveData.modificarProveedor(prove);
           
-          proveData.eliminarProveedor(1);
+          //proveData.eliminarProveedor(1);
           
           
->>>>>>> Stashed changes
-        
+
         //////metodo obtenerProducto////// 
 //              Producto obtenerProducto =pro.obtenerProducto(111);
 //               if (obtenerProducto!=null) {    
@@ -190,11 +187,5 @@ public class ProveMax74 {
         }
         
     }
-<<<<<<< Updated upstream
-
     
   }
-=======
-}
-        
->>>>>>> Stashed changes
