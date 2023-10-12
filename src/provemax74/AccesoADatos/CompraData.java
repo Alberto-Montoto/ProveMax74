@@ -29,6 +29,7 @@ import provemax74.Entidades.Proveedor;
  */
 public class CompraData {
     
+<<<<<<< Updated upstream
     ProveedorData pd = new ProveedorData();
     DetalleCompraData dcd = new DetalleCompraData();
     
@@ -185,5 +186,7 @@ public class CompraData {
 //        }
 //        return compras;
 //    }
+=======
+>>>>>>> Stashed changes
     
 }
