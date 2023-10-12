@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2023 a las 23:53:07
+-- Tiempo de generación: 13-10-2023 a las 00:56:23
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -36,6 +36,14 @@ CREATE TABLE `compra` (
   `idProveedor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`idCompra`, `fecha`, `idDetalle`, `idProveedor`) VALUES
+(1, '2023-10-11', 501, 10),
+(2, '2023-10-11', 501, 7);
+
 -- --------------------------------------------------------
 
 --
@@ -44,10 +52,10 @@ CREATE TABLE `compra` (
 
 CREATE TABLE `detallecompra` (
   `idDetalle` int(11) NOT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `precioCosto` double DEFAULT NULL,
-  `nombreProducto` varchar(50) DEFAULT NULL,
-  `idProducto` int(11) DEFAULT NULL
+  `cantidad` int(11) NOT NULL,
+  `precioCosto` double NOT NULL,
+  `nombreProducto` int(50) NOT NULL,
+  `idProducto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -55,20 +63,10 @@ CREATE TABLE `detallecompra` (
 --
 
 INSERT INTO `detallecompra` (`idDetalle`, `cantidad`, `precioCosto`, `nombreProducto`, `idProducto`) VALUES
-(2, 4, 500000, 'fideos', 222),
-(5, 2, 1000000, 'fideos', 222),
-(6, 2, 1000000, 'azucar', 333),
-(7, 2, 290, 'azucar', 333),
-(8, 2, 290, 'q41wvr', 333),
-(9, 2, 290, 'q41wvr', 111),
-(12, 3, 1500, 'fideos', 222),
-(13, 3, 1500, 'fideos', 222),
-(15, 3, 1500, 'azucar', 333),
-(16, 3, 1500, 'arroz', 111),
-(17, 4, 400, 'Te', 1),
-(18, 32, 3200, 'Te', 1),
-(19, 56, 5600, 'Te', 1),
-(20, 56, 5600, 'Te', 1);
+(500, 500, 0, 0, 111),
+(501, 60, 600, 0, 111),
+(502, 60, 600, 0, 111),
+(503, 60, 600, 0, 111);
 
 -- --------------------------------------------------------
 
@@ -78,9 +76,9 @@ INSERT INTO `detallecompra` (`idDetalle`, `cantidad`, `precioCosto`, `nombreProd
 
 CREATE TABLE `producto` (
   `idProducto` int(11) NOT NULL,
-  `nombreProducto` varchar(50) DEFAULT NULL,
+  `nombreProducto` varchar(50) NOT NULL,
   `descripcion` varchar(50) NOT NULL,
-  `precioActual` double DEFAULT NULL,
+  `precioActual` double NOT NULL,
   `stock` int(11) NOT NULL,
   `estado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -90,7 +88,6 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`idProducto`, `nombreProducto`, `descripcion`, `precioActual`, `stock`, `estado`) VALUES
-(1, 'Te', 'Verde', 100, 200, 1),
 (111, 'arroz', 'fino', 500, 150, 1),
 (222, 'fideos', 'tirabuzon', 200, 100, 1),
 (333, 'azucar', 'morena', 123, 50, 1);
@@ -158,13 +155,13 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `detallecompra`
 --
 ALTER TABLE `detallecompra`
-  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=504;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
