@@ -23,7 +23,11 @@ public class Proveedor {
         this.razonSocial = razonSocial;
         this.domicilio = domicilio;
         this.telefono = telefono;
-        this.compra = compra;
+//        this.compra = compra;
+    }
+    
+    public Proveedor(int idProveedor){
+        this.idProveedor = idProveedor;
     }
 
     public int getIdProveedor() {
@@ -68,7 +72,7 @@ public class Proveedor {
 
     @Override
     public String toString() {
-        return "Proveedor{" + "idProveedor=" + idProveedor + ", nombreCompleto=" + nombreCompleto + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono + ", compra=" + compra + '}';
+        return "Proveedor{" + "idProveedor=" + idProveedor + ", nombreCompleto=" + nombreCompleto + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono +  '}'; //", compra=" + compra +
     }
 
     

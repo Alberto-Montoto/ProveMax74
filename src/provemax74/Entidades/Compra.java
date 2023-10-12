@@ -29,6 +29,13 @@ public class Compra {
          this.detalleCompra=detalleCompra;
         
     }
+    
+    public Compra(int idCompra, LocalDate fecha, int idDetalle, int idProveedor) {
+        this.idCompra = idCompra;
+        this.fecha = fecha;
+        this.detalleCompra = new DetalleCompra(idDetalle);
+        this.proveedor = new Proveedor(idProveedor);
+    }
 
     public Compra() {
     }

@@ -116,8 +116,54 @@ public class ProveMax74 {
 //        
         Compra compra=new Compra(1, 111, fecha, 10, prove, det);
         
-        cd.agregarCompra(compra);
+//        cd.agregarCompra(compra);
         
-       
+     
+        
+        //        Producto prod = new Producto(222, "fideos", "tirabuzon", 200, 100, true); //
+
+        ProductoData prodat = new ProductoData();
+//        prodat.obtenerProducto(1);
+
+        Producto pro = prodat.obtenerProducto(111);
+
+//        DetalleCompra detalle = new DetalleCompra(2, 7, pro); //2, 56, pro.getPrecioActual(), pro.getIdProducto(), pro.getNombreProducto()
+        DetalleCompraData detalleData = new DetalleCompraData();
+
+//        DetalleCompra detalle = detalleData.buscarDetalle1(6);
+
+        DetalleCompra detalle = new DetalleCompra(5, 7, pro);
+
+        Proveedor proveedor3 = new Proveedor(8, "Humberto Primo", "Electro Mar", "Av Colón 967", "45678979");
+        ProveedorData provedat = new ProveedorData();
+
+//        provedat.guardarProveedor(proveedor3);
+
+        CompraData comdat = new CompraData();
+
+//        Compra compra = new Compra(1, proveedor3, LocalDate.now(), detalle);
+
+//        comdat.nuevaCompra(compra);
+//        comdat.eliminarCompra(23);
+//        comdat.buscarCompra(1);
+//        System.out.println("detalle " + comdat.buscarCompra(1).getIdCompra());
+//        System.out.println("detalle " + comdat.buscarCompra(1).getFecha());
+//        System.out.println("detalle " + comdat.buscarCompra(1).getProveedor());
+//        System.out.println("detalle " + comdat.buscarCompra(1).getDetalleCompra().getIdDetalle());
+        
+        comdat.listarCompra();
+        
+     
+        for (Compra comp: comdat.listarCompra()) {
+      
+        System.out.println("IdCompra - "+ comp.getIdCompra());
+        System.out.println("Fecha - " + comp.getFecha());
+        System.out.println("idProveedor - " + comp.getProveedor().getIdProveedor());
+        System.out.println("idDelalle - " + comp.getDetalleCompra().getIdDetalle());
+            System.out.println("-----------------");
+        }
+        
     }
+
+    
   }

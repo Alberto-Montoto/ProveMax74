@@ -28,9 +28,9 @@ import provemax74.Entidades.Producto;
 public class DetalleCompraData {
     
        private Connection con = null;
-       private CompraData compraData = new CompraData();
+  //     private CompraData compraData = new CompraData();
 //       private ProductoData prodData = new ProductoData();
-       private DetalleCompra detalleData = new DetalleCompra();
+  //     private DetalleCompra detalleData = new DetalleCompra();
        
     public DetalleCompraData() {
 
