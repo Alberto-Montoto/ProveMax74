@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import provemax74.Entidades.Producto;
 import provemax74.Entidades.Proveedor;
-
+import provemax74.Entidades.Compra;
 public class ProductoData {
 
 //    private Connection con = null;
@@ -210,5 +210,55 @@ public class ProductoData {
 
         return productos;
     }
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// metodo listar los productos de compra
+    
+    public List<Producto> obtenerProductosDeCompra(int idCompra) throws SQLException {
+        List<Producto> productosDeCompra = new ArrayList<>();
 
+        // Consulta SQL para obtener los productos de una compra en particular.
+        String sql = "SELECT p.idProducto, p.nombreProducto, p.descripcion, p.precioActual, p.stock "
+                + "FROM Producto p "
+                + "INNER JOIN detalleCompra dc ON p.idProducto = dc.idProducto "
+                + "WHERE dc.idCompra = ?";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idCompra);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Producto producto = new Producto();
+                    producto.setIdProducto(rs.getInt("idProducto"));
+                    producto.setNombreProducto(rs.getString("nombreProducto"));
+                    producto.setDescripcion(rs.getString("descripcion"));
+                    producto.setPrecioActual(rs.getDouble("precioActual"));
+                    producto.setStock(rs.getInt("stock"));
+
+                    productosDeCompra.add(producto);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Manejo de excepciones en caso de un error SQL.
+        }
+
+        return productosDeCompra;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// metodo listar los productos de ultima compra
+
+    public int obtenerIdUltimaCompra() throws SQLException {
+        String sql = "SELECT idCompra FROM Compra ORDER BY fecha DESC LIMIT 1";
+
+        try (PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("idCompra");
+            } else {
+                // No se encontraron compras en la base de datos.
+                return -1; // O cualquier otro valor que indique que no hay compras.
+            }
+        }
+    }
+
+    
+     
 }

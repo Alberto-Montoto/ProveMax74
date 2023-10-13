@@ -1,5 +1,6 @@
 package provemax74;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -19,34 +20,24 @@ import provemax74.Entidades.Proveedor;
 
 public class ProveMax74 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
 
         Connection con = Conexion.getConexion();
 
-        
         //////metodo agregarProducto//////
-//                                   idpro/nombrePro/descripcion/precioAct/Stok/estado
-//        Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
-//        ProductoData pro = new ProductoData(con);
-
-        //////metodo agregarProducto//////
-//                                  idpro/nombreP/descrip/precioAct/Stok/estado
-//        Producto arroz = new Producto(111, "azucar", "morena", 123, 50, true);
-//        ProductoData pro = new ProductoData();
-
-//        Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
-//        ProductoData pro = new ProductoData(con);
+//                                   idpro/nombreP/descrip/precioAct/Stok/estado
+//  Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
+        ProductoData pro = new ProductoData();
 //        pro.agregarProducto(arroz);
 
         //////metodo eliminarProducto////// 
         //  pro.eliminarProducto(333);
         
         //////metodo modificarProducto////// 
+//        pro.modificarProducto(arroz);
 
-        //   pro.modificarProducto(arroz);
 
-//              pro.modificarProducto(arroz);
               
           //Proveedor prove=new Proveedor(1,"Wachoski","Electro Mayor","Juan B Justo","011123456");
          //ProveedorData proveData=new ProveedorData();
@@ -78,9 +69,56 @@ public class ProveMax74 {
 
         //////metodo listarProductosStockMinimo////// 
 //          int stockMinimo = 10; 
-//          List<Producto> productos = pro.listarProductosStockMinimo(stockMinimo);        
+//          List<Producto> productos = pro.listarProductosStockMinimo(stockMinimo);
 
-                 
+
+
+          ////metodo listar los productos de compra //////
+//    try {
+//        int idCompra = 1; // Reemplaza con el ID de la compra que deseas consultar.
+//        List<Producto> productosDeCompra = pro.obtenerProductosDeCompra(idCompra);
+//
+//        for (Producto producto : productosDeCompra) {
+//                        System.out.println("////prodcuto adquirido en la ultima compra////");
+//            System.out.println("ID del Producto: " + producto.getIdProducto());
+//            System.out.println("Nombre del Producto: " + producto.getNombreProducto());
+//            System.out.println("Descripción: " + producto.getDescripcion());
+//            System.out.println("Precio: " + producto.getPrecioActual());
+//            System.out.println("Stock: " + producto.getStock());
+//            System.out.println("------------------------------");
+//        }
+//    } catch (SQLException ex) {
+//        ex.printStackTrace(); // Manejo de excepciones en caso de un error SQL.
+//    }
+
+
+        //////metodo listar los productos de ultima compra//////                                   dos metodos a elegir
+        
+//  try {
+//            // Llama a obtenerIdUltimaCompra para obtener el ID de la última compra.
+//            int idUltimaCompra = pro.obtenerIdUltimaCompra();
+//
+//            if (idUltimaCompra != -1) {
+//                // Se encontró una última compra, así que obtenemos los productos de esa compra.
+//                List<Producto> productosDeCompra = pro.obtenerProductosDeCompra(idUltimaCompra);
+//
+//                for (Producto producto : productosDeCompra) {
+//                    System.out.println("Se encontró una última compra");
+//                    System.out.println("ID del Producto: " + producto.getIdProducto());
+//                    System.out.println("Nombre del Producto: " + producto.getNombreProducto());
+//                    System.out.println("Descripción: " + producto.getDescripcion());
+//                    System.out.println("Precio: " + producto.getPrecioActual());
+//                    System.out.println("Stock: " + producto.getStock());
+//                    System.out.println("------------------------------");
+//                }
+//            } else {
+//                System.out.println("No se encontraron compras en la base de datos.");
+//            }
+//        } catch (SQLException ex) {
+//            ex.printStackTrace(); // Manejo de excepciones en caso de un error SQL.
+//        }
+
+       
         ////////////////// Hasta aqui Metodos de productoData ////////////////
         
       
@@ -148,14 +186,14 @@ public class ProveMax74 {
         ProductoData prodat = new ProductoData();
 //        prodat.obtenerProducto(1);
 
-        Producto pro = prodat.obtenerProducto(111);
+ //       Producto pro = prodat.obtenerProducto(111);
 
 //        DetalleCompra detalle = new DetalleCompra(2, 7, pro); //2, 56, pro.getPrecioActual(), pro.getIdProducto(), pro.getNombreProducto()
         DetalleCompraData detalleData = new DetalleCompraData();
 
 //        DetalleCompra detalle = detalleData.buscarDetalle1(6);
 
-        DetalleCompra detalle = new DetalleCompra(5, 7, pro);
+ //       DetalleCompra detalle = new DetalleCompra(5, 7, pro);
 
         Proveedor proveedor3 = new Proveedor(8, "Humberto Primo", "Electro Mar", "Av Colón 967", "45678979");
         ProveedorData provedat = new ProveedorData();
@@ -174,18 +212,18 @@ public class ProveMax74 {
 //        System.out.println("detalle " + comdat.buscarCompra(1).getProveedor());
 //        System.out.println("detalle " + comdat.buscarCompra(1).getDetalleCompra().getIdDetalle());
         
-        comdat.listarCompra();
-        
-     
-        for (Compra comp: comdat.listarCompra()) {
-      
-        System.out.println("IdCompra - "+ comp.getIdCompra());
-        System.out.println("Fecha - " + comp.getFecha());
-        System.out.println("idProveedor - " + comp.getProveedor().getIdProveedor());
-        System.out.println("idDelalle - " + comp.getDetalleCompra().getIdDetalle());
-            System.out.println("-----------------");
-        }
-        
+//        comdat.listarCompra();
+//        
+//     
+//        for (Compra comp: comdat.listarCompra()) {
+//      
+//        System.out.println("IdCompra - "+ comp.getIdCompra());
+//        System.out.println("Fecha - " + comp.getFecha());
+//        System.out.println("idProveedor - " + comp.getProveedor().getIdProveedor());
+//        System.out.println("idDelalle - " + comp.getDetalleCompra().getIdDetalle());
+//            System.out.println("-----------------");
+//        }
+//        
     }
     
   }
