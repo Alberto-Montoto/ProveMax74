@@ -4,25 +4,28 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="jMGDP">
           <Properties>
             <Property name="text" type="java.lang.String" value="  Producto  "/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMGDProd">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Productos"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="jMBDP">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Busqueda de Producto"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+            <MenuItem class="javax.swing.JMenuItem" name="jMPDBS">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Productos de bajo Stock"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMPDBSActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -31,7 +34,7 @@
             <Property name="text" type="java.lang.String" value="  Proveedor  "/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="jMGDProv">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Proveedores"/>
               </Properties>
@@ -43,19 +46,19 @@
             <Property name="text" type="java.lang.String" value="  Compra  "/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="jMGDC">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Detalle"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="jMBPC">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Productos Comprados"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+            <MenuItem class="javax.swing.JMenuItem" name="jMBC">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar Compras"/>
+                <Property name="text" type="java.lang.String" value="Buscar Compras por Proveedor"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -64,6 +67,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="  Salir  "/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu5ActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>

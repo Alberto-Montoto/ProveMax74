@@ -29,16 +29,16 @@ public class Menu extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jMGDP = new javax.swing.JMenu();
+        jMGDProd = new javax.swing.JMenuItem();
+        jMBDP = new javax.swing.JMenuItem();
+        jMPDBS = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMGDProv = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMGDC = new javax.swing.JMenuItem();
+        jMBPC = new javax.swing.JMenuItem();
+        jMBC = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,40 +54,50 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 534, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("  Producto  ");
+        jMGDP.setText("  Producto  ");
 
-        jMenuItem1.setText("Gestión de Productos");
-        jMenu1.add(jMenuItem1);
+        jMGDProd.setText("Gestión de Productos");
+        jMGDP.add(jMGDProd);
 
-        jMenuItem4.setText("Busqueda de Producto");
-        jMenu1.add(jMenuItem4);
+        jMBDP.setText("Busqueda de Producto");
+        jMGDP.add(jMBDP);
 
-        jMenuItem7.setText("Productos de bajo Stock");
-        jMenu1.add(jMenuItem7);
+        jMPDBS.setText("Productos de bajo Stock");
+        jMPDBS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMPDBSActionPerformed(evt);
+            }
+        });
+        jMGDP.add(jMPDBS);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMGDP);
 
         jMenu2.setText("  Proveedor  ");
 
-        jMenuItem2.setText("Gestión de Proveedores");
-        jMenu2.add(jMenuItem2);
+        jMGDProv.setText("Gestión de Proveedores");
+        jMenu2.add(jMGDProv);
 
         jMenuBar1.add(jMenu2);
 
         jMenu4.setText("  Compra  ");
 
-        jMenuItem3.setText("Gestión de Detalle");
-        jMenu4.add(jMenuItem3);
+        jMGDC.setText("Gestión de Detalle");
+        jMenu4.add(jMGDC);
 
-        jMenuItem5.setText("Buscar Productos Comprados");
-        jMenu4.add(jMenuItem5);
+        jMBPC.setText("Buscar Productos Comprados");
+        jMenu4.add(jMBPC);
 
-        jMenuItem6.setText("Buscar Compras");
-        jMenu4.add(jMenuItem6);
+        jMBC.setText("Buscar Compras por Proveedor");
+        jMenu4.add(jMBC);
 
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("  Salir  ");
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -105,6 +115,16 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0); //Esto se usa para salir del menu
+        
+    }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMPDBSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPDBSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMPDBSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,17 +163,17 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMBC;
+    private javax.swing.JMenuItem jMBDP;
+    private javax.swing.JMenuItem jMBPC;
+    private javax.swing.JMenuItem jMGDC;
+    private javax.swing.JMenu jMGDP;
+    private javax.swing.JMenuItem jMGDProd;
+    private javax.swing.JMenuItem jMGDProv;
+    private javax.swing.JMenuItem jMPDBS;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }
