@@ -129,6 +129,12 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMPDBSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPDBSActionPerformed
         // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ProductosDeBajoStock pbs = new ProductosDeBajoStock();
+        pbs.setVisible(true);
+        escritorio.add(pbs);
+        escritorio.moveToFront(pbs);
     }//GEN-LAST:event_jMPDBSActionPerformed
 
     private void jMGDProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDProdActionPerformed

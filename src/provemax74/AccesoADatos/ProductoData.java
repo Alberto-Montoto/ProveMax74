@@ -300,7 +300,7 @@ public class ProductoData {
 
 //            if (rs.next()) {
 //                producto.setIdProducto(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "producto guardado");
+                JOptionPane.showMessageDialog(null, "El producto ha sido guardado");
 //            }
 
             ps.close();
@@ -328,7 +328,7 @@ public class ProductoData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "producto modificado");
+                JOptionPane.showMessageDialog(null, "El producto se ha modificado");
             }
             ps.close();
 
@@ -365,7 +365,7 @@ public class ProductoData {
     
     public List<Producto> listarProducotosEstado() {
 
-        String sql = "SELECT idProducto, nombreProducto, descripcion, precioActual, stock FROM producto ";
+        String sql = "SELECT idProducto, nombreProducto, descripcion, precioActual, stock, estado FROM producto ";
         ArrayList<Producto> productos = new ArrayList<>();
 
         try {
@@ -381,7 +381,7 @@ public class ProductoData {
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
-                producto.setestado(true);
+                producto.setestado(rs.getBoolean("estado")); // Recupera el estado real
 
                 productos.add(producto);
             }

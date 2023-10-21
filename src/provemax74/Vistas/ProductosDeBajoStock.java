@@ -5,6 +5,11 @@
  */
 package provemax74.Vistas;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import provemax74.AccesoADatos.ProductoData;
+import provemax74.Entidades.Producto;
+
 /**
  *
  * @author maria
@@ -14,8 +19,20 @@ public class ProductosDeBajoStock extends javax.swing.JInternalFrame {
     /**
      * Creates new form ProductosDeBajoStock
      */
+    Producto produ = new Producto();
+    ProductoData prodDat = new ProductoData();
+    DefaultTableModel model = new DefaultTableModel(){
+
+        @Override
+        public boolean isCellEditable(int i, int i1) {
+            return false;
+        }
+        
+    };
     public ProductosDeBajoStock() {
         initComponents();
+        armarCabecera();
+        refrescarTablaDeProductos();
     }
 
     /**
@@ -29,10 +46,10 @@ public class ProductosDeBajoStock extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTabla = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -43,7 +60,7 @@ public class ProductosDeBajoStock extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTabla);
 
         jLabel1.setText("Productos de bajo Stock");
 
@@ -85,10 +102,37 @@ public class ProductosDeBajoStock extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
+     private void armarCabecera(){
+        model.addColumn("Producto");
+        model.addColumn("Descripción");
+        model.addColumn("Precio");
+        model.addColumn("Stock");
+        model.addColumn("Estado");
+        
+        jTabla.setModel(model);
+    }
+     
+    public void refrescarTablaDeProductos() {
+    // Borra todas las filas existentes en el modelo
+    int filas = model.getRowCount();
+    for (int i = filas - 1; i >= 0; i--) {
+        model.removeRow(i);
+    }
+       
+    // Llena el modelo con los productos actualizados
+    List<Producto> productos = prodDat.listarProducotosEstado(); // Suponiendo que tienes un método para listar productos
+    for (Producto producto : productos) {
+        if (producto.getStock() < 25) {
+        String estadoStr = producto.estado() ? "Activo" : "Inactivo";
+        model.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(), producto.getPrecioActual(), producto.getStock(), estadoStr});
+    }
+    }
+    
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTabla;
     // End of variables declaration//GEN-END:variables
 }
