@@ -5,6 +5,16 @@
  */
 package provemax74.Vistas;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import provemax74.AccesoADatos.ProductoData;
+import provemax74.Entidades.Producto;
+
 /**
  *
  * @author maria
@@ -14,8 +24,22 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
     /**
      * Creates new form Producto
      */
+    Producto produ = new Producto();
+    ProductoData prodDat = new ProductoData();
+    DefaultTableModel model = new DefaultTableModel(){
+
+        @Override
+        public boolean isCellEditable(int i, int i1) {
+            return false;
+        }
+        
+    };
+    
     public GestionDeProducto() {
         initComponents();
+        noEditable();
+        armarCabecera();
+        refrescarTablaDeProductos();
     }
 
     /**
@@ -33,15 +57,17 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jTProducto = new javax.swing.JTextField();
+        jTDescripcion = new javax.swing.JTextField();
+        jTStock = new javax.swing.JTextField();
+        jTPrecio = new javax.swing.JTextField();
+        jRBEstado = new javax.swing.JRadioButton();
+        jBAgregar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
+        jBModificar = new javax.swing.JButton();
+        jBNuevo = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTabla = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel2.setText("Nombre de producto:");
@@ -54,13 +80,51 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Estado:");
 
-        jButton1.setText("Agregar");
+        jBAgregar.setText("Agregar");
+        jBAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAgregarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Eliminar");
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Modificar");
+        jBModificar.setText("Modificar");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Nuevo");
+        jBNuevo.setText("Nuevo");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
+
+        jTabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTabla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,21 +142,24 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6))
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jRBEstado)
+                            .addComponent(jTDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTStock, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jButton1)
+                        .addGap(15, 15, 15)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jBAgregar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(jBEliminar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addComponent(jBNuevo)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,30 +167,32 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jRadioButton1))
-                .addGap(68, 68, 68)
+                    .addComponent(jRBEstado))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(jBAgregar)
+                    .addComponent(jBEliminar)
+                    .addComponent(jBModificar)
+                    .addComponent(jBNuevo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Gestión de Producto");
@@ -132,13 +201,13 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(173, 173, 173)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,18 +215,255 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(jTProducto.getText().isEmpty()||jTDescripcion.getText().isEmpty()||jTPrecio.getText().isEmpty()||jTStock.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Falta llenar un campo");
+                return;
+            }
+                
+            String producto = jTProducto.getText();
+            String descripcion = jTDescripcion.getText();
+            double precio = (Double.parseDouble(jTPrecio.getText()));
+            int stock = (Integer.parseInt(jTStock.getText()));
+            boolean estado = jRBEstado.isSelected();
+            
+            produ.setNombreProducto(producto);
+            produ.setDescripcion(descripcion);
+            produ.setPrecioActual(precio);
+            produ.setStock(stock);
+            produ.setestado(estado);
+            String estadoStr = estado ? "Activo" : "Inactivo"; // Convierte el booleano en un String
+            
+            prodDat.agregarProductoSinID(produ);
+            
+            model.addRow(new Object[]{producto, descripcion, precio, stock, estadoStr});
+            
+            } catch (NumberFormatException nf) {
+            JOptionPane.showMessageDialog(this, "Error al ingresar los datos, intente nuevamente");
+            
+        }
+        limpiarCampos();
+        noEditable();
+    }//GEN-LAST:event_jBAgregarActionPerformed
 
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        // TODO add your handling code here:
+        editable();
+        limpiarCampos();
+    }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        int filasS = jTabla.getSelectedRow();
+        if (filasS != -1) {
+        String nombreProducto = (String) model.getValueAt(filasS, 0);
+        
+        // Eliminar el producto de la base de datos
+        prodDat.eliminarProductoPorNombre(nombreProducto);
+        
+        // Eliminar la fila de la tabla local
+        model.removeRow(filasS);
+
+        }else{
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna fila");
+        }
+        limpiarCampos();
+        noEditable();
+        
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+        // TODO add your handling code here:
+//        llenarTextField();
+        try {
+            if(jTProducto.getText().isEmpty()||jTDescripcion.getText().isEmpty()||jTPrecio.getText().isEmpty()||jTStock.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Falta llenar un campo");
+                return;
+            }
+        // Recupera los datos modificados de los campos
+            String producto = jTProducto.getText();
+            String descripcion = jTDescripcion.getText();
+            double precio = (Double.parseDouble(jTPrecio.getText()));
+            int stock = (Integer.parseInt(jTStock.getText()));
+            boolean estado = jRBEstado.isSelected();
+        
+        // Actualiza el producto en la base de datos
+            produ.setNombreProducto(producto);
+            produ.setDescripcion(descripcion);
+            produ.setPrecioActual(precio);
+            produ.setStock(stock);
+            produ.setestado(estado);
+            String estadoStr = estado ? "Activo" : "Inactivo"; // Convierte el booleano en un String
+        
+//            prodDat.agregarProductoSinID(produ);
+            
+            model.addRow(new Object[]{producto, descripcion, precio, stock, estadoStr});
+
+            int filasS = jTabla.getSelectedRow();
+        if (filasS != -1) {
+        String nombreProducto = (String) model.getValueAt(filasS, 0);
+        
+        // Eliminar el producto de la base de datos
+        prodDat.eliminarProductoModificado(nombreProducto);
+        
+        // Eliminar la fila de la tabla local
+        model.removeRow(filasS);
+        }
+
+        prodDat.agregarProductoSinID(produ);
+        // Limpia los campos y deshabilita la edición
+        limpiarCampos();
+        noEditable();
+    } catch (NumberFormatException nf) {
+        JOptionPane.showMessageDialog(this, "Error al ingresar los datos, intente nuevamente");
+    }
+        
+    }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaMouseClicked
+        // TODO add your handling code here:
+        editable();
+        
+        int filaS = jTabla.getSelectedRow();
+        
+        if (filaS != -1) {
+            
+            String nombre = (String) jTabla.getValueAt(filaS, 0);
+            String descripcion = (String) jTabla.getValueAt(filaS, 1);
+            double precio = (Double) jTabla.getValueAt(filaS, 2);
+            int stock = (Integer) jTabla.getValueAt(filaS, 3);
+            String estado = jTabla.getValueAt(filaS, 4).toString();
+            if (estado.equals("Activo")) {
+                jRBEstado.setSelected(true);
+            } else {
+                jRBEstado.setSelected(false);
+}
+            
+            
+            jTProducto.setText(nombre);
+            jTDescripcion.setText(descripcion);
+            jTPrecio.setText(precio+"");
+            jTStock.setText(stock+"");
+            jRBEstado.isSelected();
+            
+            
+            
+        }
+        
+//        llenarTextField();
+    }//GEN-LAST:event_jTablaMouseClicked
+
+
+    public void limpiarCampos(){
+        jTProducto.setText("");
+        jTDescripcion.setText("");
+        jTPrecio.setText("");
+        jTStock.setText("");
+        jRBEstado.setSelected(false);
+    }
+    
+    public void esconderCampos(){
+        jTProducto.setVisible(false);
+        jTDescripcion.setVisible(false);
+        jTPrecio.setVisible(false);
+        jTStock.setVisible(false);
+        jRBEstado.setVisible(false);
+    }
+    
+    public void mostrarCampos(){
+        jTProducto.setVisible(true);
+        jTDescripcion.setVisible(true);
+        jTPrecio.setVisible(true);
+        jTStock.setVisible(true);
+        jRBEstado.setVisible(true);
+    }
+    
+    public void noEditable(){
+        jTProducto.setEnabled(false);
+        jTDescripcion.setEnabled(false);
+        jTPrecio.setEnabled(false);
+        jTStock.setEnabled(false);
+        jRBEstado.setEnabled(false);
+    }
+    
+    public void editable(){
+        jTProducto.setEnabled(true);
+        jTDescripcion.setEnabled(true);
+        jTPrecio.setEnabled(true);
+        jTStock.setEnabled(true);
+        jRBEstado.setEnabled(true);
+    }
+    
+    private void armarCabecera(){
+        model.addColumn("Producto");
+        model.addColumn("Descripción");
+        model.addColumn("Precio");
+        model.addColumn("Stock");
+        model.addColumn("Estado");
+        
+        jTabla.setModel(model);
+    }
+    
+    // Método para refrescar la tabla de productos
+public void refrescarTablaDeProductos() {
+    // Borra todas las filas existentes en el modelo
+    int filas = model.getRowCount();
+    for (int i = filas - 1; i >= 0; i--) {
+        model.removeRow(i);
+    }
+
+    // Llena el modelo con los productos actualizados
+    List<Producto> productos = prodDat.listarProducotosEstado(); // Suponiendo que tienes un método para listar productos
+    for (Producto producto : productos) {
+        String estadoStr = producto.estado() ? "Activo" : "Inactivo";
+        model.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(), producto.getPrecioActual(), producto.getStock(), estadoStr});
+    }
+}
+
+public void llenarTextField (){
+    jTabla.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            int filaSeleccionada = jTabla.getSelectedRow();
+            if (filaSeleccionada >= 0) {
+                // Obtén los valores de las celdas en la fila seleccionada
+                String producto = jTabla.getValueAt(filaSeleccionada, 0).toString();
+                String descripcion = jTabla.getValueAt(filaSeleccionada, 1).toString();
+                String precio = jTabla.getValueAt(filaSeleccionada, 2).toString();
+                String stock = jTabla.getValueAt(filaSeleccionada, 3).toString();
+                String estado = jTabla.getValueAt(filaSeleccionada, 4).toString();
+
+                // Establece estos valores en tus campos de texto
+                jTProducto.setText(producto);
+                jTDescripcion.setText(descripcion);
+                jTPrecio.setText(precio);
+                jTStock.setText(stock);
+                jRBEstado.setSelected(estado.equals("Activo"));
+            }
+        }
+    }
+});
+
+}
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBAgregar;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBModificar;
+    private javax.swing.JButton jBNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -165,10 +471,12 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JRadioButton jRBEstado;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTDescripcion;
+    private javax.swing.JTextField jTPrecio;
+    private javax.swing.JTextField jTProducto;
+    private javax.swing.JTextField jTStock;
+    private javax.swing.JTable jTabla;
     // End of variables declaration//GEN-END:variables
 }
