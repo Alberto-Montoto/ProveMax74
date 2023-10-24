@@ -21,6 +21,7 @@ import provemax74.Entidades.Compra;
 import provemax74.Entidades.DetalleCompra;
 import provemax74.AccesoADatos.ProveedorData;
 import provemax74.AccesoADatos.DetalleCompraData;
+import provemax74.Entidades.Producto;
 import provemax74.Entidades.Proveedor;
 
 /**
@@ -41,6 +42,7 @@ public class CompraData {
         
     }
     
+        //Agregar compra
     public void agregarCompra(Compra compra){
     
         String sql="INSERT INTO compra (fecha, idDetalle, idProveedor)"+
@@ -97,7 +99,7 @@ public class CompraData {
     }
     
 
-//Buscar compra por Id
+        //Buscar compra por Id
     public Compra buscarCompra(int id) {
         Compra compra = null;
         try {
@@ -127,7 +129,7 @@ public class CompraData {
         return compra;
     }
 
-    //Listar compra
+        //Listar compra
     public List<Compra> listarCompra() {
         List<Compra> compras = new ArrayList();
         try {
@@ -157,35 +159,4 @@ public class CompraData {
         }
         return compras;
     }
-
-
-
-    
-//    //Listar compra
-//    public List<Compra> listarCompra() {
-//        List<Compra> compras = new ArrayList();
-//        try {
-//            String listar = "SELECT * FROM compra";
-//            
-//            PreparedStatement ps = con.prepareStatement(listar);
-//            ResultSet rs = ps.executeQuery();
-//            
-//            while (rs.next()) {
-//                ProveedorData proveedor = new ProveedorData();
-//                Compra compra = new Compra();
-//                compra.setIdCompra(rs.getInt("idCompra"));
-//                compra.setProveedor(proveedor.buscarProveedor(rs.getInt("idProveedor")));
-//                compra.setFecha(rs.getDate("fecha").toLocalDate());
-//                
-//                compras.add(compra);
-//            }
-//            
-//            ps.close();
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla compra. " + ex.getMessage());
-//        }
-//        return compras;
-//    }
-
-    
 }

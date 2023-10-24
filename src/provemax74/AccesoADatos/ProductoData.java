@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -405,6 +407,66 @@ public class ProductoData {
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto: " + ex.getMessage());
     }
+}
+    
+    
+    public List<Producto> listarProductosDeUltimaCompra() { //LocalDate utilDate
+    LocalDate fechaUltimaCompra = obtenerFechaUltimaCompra();
+    
+
+
+    String sql = "SELECT p.nombreProducto, p.descripcion, p.precioActual, p.stock " +
+                 "FROM producto p " +
+                 "JOIN detalleCompra dc ON p.idProducto = dc.idProducto " +
+                 "JOIN compra c ON dc.idCompra = c.idCompra " +
+                 "WHERE c.fecha = ?";
+
+    List<Producto> productos = new ArrayList<>();
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setDate(1, Date.valueOf(fechaUltimaCompra));
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Producto producto = new Producto();
+            producto.setNombreProducto(rs.getString("nombreProducto"));
+            producto.setDescripcion(rs.getString("descripcion"));
+            producto.setPrecioActual(rs.getDouble("precioActual"));
+            producto.setStock(rs.getInt("stock"));
+            productos.add(producto);
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto: " + ex.getMessage());
+    }
+
+    return productos;
+}
+
+    
+    public LocalDate obtenerFechaUltimaCompra() {
+    LocalDate fechaUltimaCompra = null;
+
+    String sql = "SELECT MAX(fecha) AS ultimaFecha FROM compra";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            fechaUltimaCompra = rs.getDate("ultimaFecha").toLocalDate();
+        } //    LocalDate fechaSeleccionada = jdchFecha1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla compra: " + ex.getMessage());
+    }
+
+    return fechaUltimaCompra;
 }
     
 }

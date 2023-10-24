@@ -62,11 +62,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Detalle"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMGDCActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMBPC">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Productos Comprados"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMBPCActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMBC">
               <Properties>
