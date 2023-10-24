@@ -123,8 +123,8 @@ public class ProveMax74 {
         
       
         
-//          Proveedor prove=new Proveedor();
-//          ProveedorData proveData=new ProveedorData();
+//       Proveedor prove=new Proveedor();
+         ProveedorData proveData=new ProveedorData();
 //          
 //          //proveData.guardarProveedor(prove);
 //          
@@ -195,7 +195,7 @@ public class ProveMax74 {
 
  //       DetalleCompra detalle = new DetalleCompra(5, 7, pro);
 
-        Proveedor proveedor3 = new Proveedor(8, "Humberto Primo", "Electro Mar", "Av Colón 967", "45678979");
+        Proveedor proveedor3 = new Proveedor();
         ProveedorData provedat = new ProveedorData();
 
 //        provedat.guardarProveedor(proveedor3);

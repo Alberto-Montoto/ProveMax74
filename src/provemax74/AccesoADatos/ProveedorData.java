@@ -40,15 +40,14 @@ public class ProveedorData {
     
     public void guardarProveedor(Proveedor proveedor) {
 
-        String sql = "INSERT INTO proveedor(nombreCompleto, razonSocial,domicilio,telefono)"
-                + "VALUES(?,?,?,?)";
+        String sql = "INSERT INTO proveedor(razonSocial,domicilio,telefono)"
+                + "VALUES(?,?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1,proveedor.getNombreCompleto());
-            ps.setString(2,proveedor.getRazonSocial());
-            ps.setString(3,proveedor.getDomicilio());
-            ps.setString(4,proveedor.getTelefono());
+            ps.setString(1,proveedor.getRazonSocial());
+            ps.setString(2,proveedor.getDomicilio());
+            ps.setString(3,proveedor.getTelefono());
                   
             ps.executeUpdate();
 
@@ -71,17 +70,16 @@ public class ProveedorData {
 }
     
     public void modificarProveedor(Proveedor proveedor) {
-        String sql = "UPDATE proveedor SET nombreCompleto=?,razonSocial=?,domicilio=?,telefono=?"
+        String sql = "UPDATE proveedor SET razonSocial=?,domicilio=?,telefono=?"
                 + "WHERE idProveedor=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setString(1, proveedor.getNombreCompleto());
-            ps.setString(2, proveedor.getRazonSocial());
-            ps.setString(3, proveedor.getDomicilio());
-            ps.setString(4, proveedor.getTelefono());
-            ps.setInt(5, proveedor.getIdProveedor());
+            ps.setString(1, proveedor.getRazonSocial());
+            ps.setString(2, proveedor.getDomicilio());
+            ps.setString(3, proveedor.getTelefono());
+            ps.setInt(4, proveedor.getIdProveedor());
 
             int exito = ps.executeUpdate();
 
@@ -92,6 +90,20 @@ public class ProveedorData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedor" + ex.getMessage());
         }
+    }
+    
+        public void RazonSocialModificado(String razonSociall) {
+        String sql = "DELETE FROM proveedor WHERE razonSocial = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, razonSociall);
+
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto: " + ex.getMessage());
+        }
+
     }
 
     public void eliminarProveedor(int id) {
@@ -113,10 +125,30 @@ public class ProveedorData {
         }
     }
     
+    public void eliminarProveedorPorRazonSocial(String razonSocial) {
+        String sql = "DELETE FROM proveedor WHERE razonSocial = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, razonSocial);
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "El proveedor ha sido eliminado");
+            } else {
+                JOptionPane.showMessageDialog(null, "El proveedor no existe");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedor" + ex.getMessage());
+        }
+    }
+
 
     public Proveedor buscarProveedor(int id) {
         
-        String sql="SELECT nombreCompleto, razonSocial, domicilio, telefono FROM proveedor WHERE idProveedor=?";
+        String sql="SELECT razonSocial, domicilio, telefono FROM proveedor WHERE idProveedor=?";
         
         Proveedor proveedor=null;
         
@@ -132,7 +164,6 @@ public class ProveedorData {
                 proveedor =new Proveedor();
                 
                 proveedor.setIdProveedor(id);
-                proveedor.setNombreCompleto(rs.getString("nombreCompleto"));
                 proveedor.setRazonSocial(rs.getString("razonSocial"));
                 proveedor.setDomicilio(rs.getString("domicilio"));
                 proveedor.setTelefono(rs.getString("telefono"));
@@ -155,14 +186,13 @@ public class ProveedorData {
     public List<Proveedor> listarProveedor() {
         List<Proveedor> proveedores = new ArrayList<>();
 
-        String sql = "SELECT idProveedor, nombreCompleto, razonSocial, domicilio, telefono FROM proveedor ";
+        String sql = "SELECT idProveedor, razonSocial, domicilio, telefono FROM proveedor ";
 
         try (PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Proveedor pro = new Proveedor();
                 pro.setIdProveedor(rs.getInt("idProveedor"));
-                pro.setNombreCompleto(rs.getString("nombreCompleto"));
                 pro.setRazonSocial(rs.getString("razonSocial"));
                 pro.setDomicilio(rs.getString("domicilio"));
                 pro.setTelefono(rs.getString("telefono"));
@@ -175,7 +205,7 @@ public class ProveedorData {
         return proveedores;
     }
     
-
+  
 }  
 
 

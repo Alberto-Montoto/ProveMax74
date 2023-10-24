@@ -4,7 +4,6 @@ public class Proveedor {
 
     private int idProveedor;
     
-    private String nombreCompleto;
 
     private String razonSocial;
 
@@ -17,13 +16,18 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int idProveedor, String nombreCompleto, String razonSocial, String domicilio, String telefono) {
-        this.nombreCompleto=nombreCompleto;
+    public Proveedor(int idProveedor, String razonSocial, String domicilio, String telefono) {
         this.idProveedor = idProveedor;
         this.razonSocial = razonSocial;
         this.domicilio = domicilio;
         this.telefono = telefono;
 //        this.compra = compra;
+    }
+
+    public Proveedor(String razonSocial, String domicilio, String telefono) {
+        this.razonSocial = razonSocial;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
     }
     
     public Proveedor(int idProveedor){
@@ -38,13 +42,7 @@ public class Proveedor {
         this.idProveedor = idProveedor;
     }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
 
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
 
     public String getRazonSocial() {
         return razonSocial;
@@ -73,7 +71,7 @@ public class Proveedor {
     @Override
     public String toString() {
 
-        return "Proveedor{" + "idProveedor=" + idProveedor + ", nombreCompleto=" + nombreCompleto + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono +  '}'; //", compra=" + compra    
+        return "Proveedor{" + "idProveedor=" + idProveedor + ", razonSocial=" + razonSocial + ", domicilio=" + domicilio + ", telefono=" + telefono +  '}'; //", compra=" + compra    
 
     }
 

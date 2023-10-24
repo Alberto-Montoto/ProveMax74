@@ -55,6 +55,11 @@ public class Menu extends javax.swing.JFrame {
         );
 
         jMGDP.setText("  Producto  ");
+        jMGDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMGDPActionPerformed(evt);
+            }
+        });
 
         jMGDProd.setText("Gestión de Productos");
         jMGDProd.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +85,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.setText("  Proveedor  ");
 
         jMGDProv.setText("Gestión de Proveedores");
+        jMGDProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMGDProvActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMGDProv);
 
         jMenuBar1.add(jMenu2);
@@ -147,6 +157,20 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(gdp);
         
     }//GEN-LAST:event_jMGDProdActionPerformed
+
+    private void jMGDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMGDPActionPerformed
+
+    private void jMGDProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDProvActionPerformed
+               // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionDeProveedores gdp = new  GestionDeProveedores();
+        gdp.setVisible(true);
+        escritorio.add(gdp);
+        escritorio.moveToFront(gdp);
+    }//GEN-LAST:event_jMGDProvActionPerformed
 
     /**
      * @param args the command line arguments

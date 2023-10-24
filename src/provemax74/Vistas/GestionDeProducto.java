@@ -119,6 +119,16 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTabla.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                jTablaAncestorMoved(evt);
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTablaAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jTabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTablaMouseClicked(evt);
@@ -363,6 +373,14 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
         
 //        llenarTextField();
     }//GEN-LAST:event_jTablaMouseClicked
+
+    private void jTablaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTablaAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTablaAncestorAdded
+
+    private void jTablaAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTablaAncestorMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTablaAncestorMoved
 
 
     public void limpiarCampos(){
