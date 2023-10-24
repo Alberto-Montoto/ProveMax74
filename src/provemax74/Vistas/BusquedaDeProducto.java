@@ -5,6 +5,10 @@
  */
 package provemax74.Vistas;
 
+import javax.swing.table.DefaultTableModel;
+import provemax74.AccesoADatos.ProductoData;
+import provemax74.Entidades.Producto;
+
 /**
  *
  * @author maria
@@ -14,8 +18,19 @@ public class BusquedaDeProducto extends javax.swing.JInternalFrame {
     /**
      * Creates new form BusquedaDeProducto
      */
+    Producto produ = new Producto();
+    ProductoData prodDat = new ProductoData();
+    DefaultTableModel model = new DefaultTableModel(){
+
+        @Override
+        public boolean isCellEditable(int i, int i1) {
+            return false;
+        }
+        
+    };
     public BusquedaDeProducto() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -56,6 +71,12 @@ public class BusquedaDeProducto extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTBuscar);
 
         jLabel1.setText("Busqueda de Productos");
+
+        jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setText("Buscar por fecha:");
 
@@ -119,8 +140,8 @@ public class BusquedaDeProducto extends javax.swing.JInternalFrame {
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jBBuscar)
                 .addGap(36, 36, 36))
         );
@@ -143,7 +164,22 @@ public class BusquedaDeProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRB1ActionPerformed
 
+    private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_jDateChooser1MouseClicked
 
+     private void armarCabecera(){
+        model.addColumn("Producto");
+        model.addColumn("Descripción");
+        model.addColumn("Precio");
+        model.addColumn("Stock");
+        
+        jTBuscar.setModel(model);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBBuscar;

@@ -70,6 +70,11 @@ public class Menu extends javax.swing.JFrame {
         jMGDP.add(jMGDProd);
 
         jMBDP.setText("Busqueda de Producto");
+        jMBDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMBDPActionPerformed(evt);
+            }
+        });
         jMGDP.add(jMBDP);
 
         jMPDBS.setText("Productos de bajo Stock");
@@ -158,6 +163,7 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMGDProdActionPerformed
 
+<<<<<<< HEAD
     private void jMGDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMGDPActionPerformed
@@ -171,6 +177,18 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(gdp);
         escritorio.moveToFront(gdp);
     }//GEN-LAST:event_jMGDProvActionPerformed
+=======
+    private void jMBDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBDPActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        BusquedaDeProducto bdp = new BusquedaDeProducto();
+        bdp.setVisible(true);
+        escritorio.add(bdp);
+        escritorio.moveToFront(bdp);
+        
+    }//GEN-LAST:event_jMBDPActionPerformed
+>>>>>>> f826d6816655cbef4f8b9e64fdcbf19abcc581d1
 
     /**
      * @param args the command line arguments
