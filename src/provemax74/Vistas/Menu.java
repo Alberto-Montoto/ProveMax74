@@ -39,6 +39,12 @@ public class Menu extends javax.swing.JFrame {
         jMGDC = new javax.swing.JMenuItem();
         jMBPC = new javax.swing.JMenuItem();
         jMBC = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,14 +53,17 @@ public class Menu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 534, Short.MAX_VALUE)
+            .addGap(0, 738, Short.MAX_VALUE)
         );
 
+        jMGDP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/home-appliance.png"))); // NOI18N
         jMGDP.setText("  Producto  ");
+        jMGDP.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMGDP.setPreferredSize(new java.awt.Dimension(200, 60));
         jMGDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMGDPActionPerformed(evt);
@@ -87,7 +96,10 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMGDP);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/proveedor (1).png"))); // NOI18N
         jMenu2.setText("  Proveedor  ");
+        jMenu2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMenu2.setPreferredSize(new java.awt.Dimension(200, 60));
 
         jMGDProv.setText("Gestión de Proveedores");
         jMGDProv.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +111,10 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/anadir-al-carrito (1).png"))); // NOI18N
         jMenu4.setText("  Compra  ");
+        jMenu4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMenu4.setPreferredSize(new java.awt.Dimension(200, 60));
 
         jMGDC.setText("Gestión de Detalle");
         jMGDC.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +142,46 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/dueno-de-la-tienda.png"))); // NOI18N
+        jMenu1.setText("Detalle");
+        jMenu1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMenu1.setPreferredSize(new java.awt.Dimension(200, 60));
+
+        jMenuItem1.setText("Gestión de Detalle de Compras");
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/consulta.png"))); // NOI18N
+        jMenu3.setText("Consultas");
+        jMenu3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMenu3.setPreferredSize(new java.awt.Dimension(200, 60));
+
+        jMenuItem2.setText("Productos Comprados");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuItem3.setText("Lista de  Compra a Proveedores");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
+        jMenuItem4.setText("Productos debajo del stock mínimo");
+        jMenu3.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar-sesion (1).png"))); // NOI18N
         jMenu5.setText("  Salir  ");
+        jMenu5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMenu5.setPreferredSize(new java.awt.Dimension(200, 60));
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu5ActionPerformed(evt);
@@ -222,6 +276,14 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMGDCActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -268,9 +330,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMGDProd;
     private javax.swing.JMenuItem jMGDProv;
     private javax.swing.JMenuItem jMPDBS;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }
