@@ -137,8 +137,7 @@ public class ProveedorData {
 
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "El proveedor ha sido eliminado");
-            } else {
-                JOptionPane.showMessageDialog(null, "El proveedor no existe");
+            } else {             
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedor" + ex.getMessage());
@@ -204,6 +203,29 @@ public class ProveedorData {
         }
         return proveedores;
     }
+    
+public int obtenerIdProveedorPorRazonSocial(String razonSocial) {
+    int idProveedor = -1; // Valor predeterminado en caso de no encontrar el proveedor
+
+    try {
+        String query = "SELECT idProveedor FROM proveedor WHERE razonSocial = ?";
+        PreparedStatement statement = con.prepareStatement(query);
+        statement.setString(1, razonSocial);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            idProveedor = resultSet.getInt("idProveedor");
+        }
+
+        statement.close();
+    } catch (SQLException e) {
+        // Maneja cualquier excepción de SQL aquí
+        e.printStackTrace();
+    }
+
+    return idProveedor;
+}
+
     
   
 }  

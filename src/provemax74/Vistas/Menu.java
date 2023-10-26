@@ -108,6 +108,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu4.add(jMBPC);
 
         jMBC.setText("Buscar Compras por Proveedor");
+        jMBC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMBCActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMBC);
 
         jMenuBar1.add(jMenu4);
@@ -163,7 +168,7 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMGDProdActionPerformed
 
-<<<<<<< HEAD
+
     private void jMGDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMGDPActionPerformed
@@ -177,7 +182,7 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(gdp);
         escritorio.moveToFront(gdp);
     }//GEN-LAST:event_jMGDProvActionPerformed
-=======
+
     private void jMBDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBDPActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
@@ -188,7 +193,16 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(bdp);
         
     }//GEN-LAST:event_jMBDPActionPerformed
->>>>>>> f826d6816655cbef4f8b9e64fdcbf19abcc581d1
+
+    private void jMBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBCActionPerformed
+                escritorio.removeAll();
+        escritorio.repaint();
+        BuscarComprasPorProveedor gdp = new  BuscarComprasPorProveedor();
+        gdp.setVisible(true);
+        escritorio.add(gdp);
+        escritorio.moveToFront(gdp);
+    }//GEN-LAST:event_jMBCActionPerformed
+
 
     /**
      * @param args the command line arguments

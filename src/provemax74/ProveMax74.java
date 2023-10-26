@@ -175,7 +175,7 @@ public class ProveMax74 {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fecha = LocalDate.parse(fechaString, formatter);
 //        
-        Compra compra=new Compra(1, 111, fecha, 10, prove, det);
+ //       Compra compra=new Compra(1, 111, fecha, 10, prove, det);
         
 //        cd.agregarCompra(compra);
         

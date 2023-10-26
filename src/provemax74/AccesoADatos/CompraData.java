@@ -158,9 +158,38 @@ public class CompraData {
         return compras;
     }
 
+    public List<Compra> listarCompraPorProveedor(int idProveedor) {
+        List<Compra> compras = new ArrayList<>();
+
+        try {
+            String query = "SELECT * FROM compra WHERE idProveedor = ?";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1, idProveedor);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Compra compra = new Compra();
+                compra.setIdCompra(resultSet.getInt("idCompra"));
+                compra.setFecha(resultSet.getDate("fecha").toLocalDate());
+
+                // Si tienes detalles de compra y proveedor en la tabla de compras, deberás obtenerlos aquí.
+                // Ejemplo: compra.setDetalleCompra(detalleCompra);
+                //         compra.setProveedor(proveedor);
+                compras.add(compra);
+                
+            }
+
+            statement.close();
+        } catch (SQLException e) {
+            // Maneja cualquier excepción de SQL aquí
+            e.printStackTrace();
+        }
+
+        return compras;
+    }
 
 
-    
 //    //Listar compra
 //    public List<Compra> listarCompra() {
 //        List<Compra> compras = new ArrayList();

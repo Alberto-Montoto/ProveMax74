@@ -265,6 +265,16 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
             String razonSocial = jTRazon.getText();
             String domicilio = jTDomicilio.getText();
             String telefono = jTTelefono.getText();
+
+            if (!telefono.matches("\\d+")) { // Comprueba si contiene solo números
+                JOptionPane.showMessageDialog(this, "Error, datos de teléfono inválidos. Ingrese solo números");
+                return;
+            }
+            // Validación para comprobar si el teléfono contiene solo números y tiene al menos 8 dígitos
+            if (!telefono.matches("\\d{10,}")) {
+                JOptionPane.showMessageDialog(this, "Número de teléfono inválido. Debe contener al menos 10 dígitos");
+                return;
+            }
 //            double precio = (Double.parseDouble(jTPrecio.getText())); parcear un objeto
 
             prove.setRazonSocial(razonSocial);
@@ -329,19 +339,19 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
 
 
 
-    public void refrescarTablaDeProveedores() {
-        // Borra todas las filas existentes en el modelo
-        int filas = tabla2.getRowCount();
-        for (int i = filas - 1; i >= 0; i--) {
-            tabla2.removeRow(i);
-        }
-
-        // Llena el modelo con los productos actualizados
-        List<Proveedor> proveedores = pd.listarProveedor(); // Suponiendo que tienes un método para listar productos
-        for (Proveedor proveedor : proveedores) {
-            tabla2.addRow(new Object[]{prove.getRazonSocial(), prove.getDomicilio(), prove.getTelefono()});
-        }
+public void refrescarTablaDeProveedores() {
+    // Borra todas las filas existentes en el modelo
+    int filas = jTablaprove.getRowCount();
+    for (int i = filas - 1; i >= 0; i--) {
+        tabla2.removeRow(i);
     }
+
+    // Llena el modelo con los productos actualizados
+    List<Proveedor> proveedores = pd.listarProveedor(); // Suponiendo que tienes un método para listar proveedores
+    for (Proveedor proveedor : proveedores) {
+        tabla2.addRow(new Object[]{proveedor.getRazonSocial(), proveedor.getDomicilio(), proveedor.getTelefono()});
+    }
+}
 
     private void armarCabecera() {
         tabla2.addColumn("Razonsocial");
