@@ -34,9 +34,16 @@ public class ProductoData {
         con = Conexion.getConexion();
     }
 
+
     public Connection getCon() {
         return con;
     }
+
+
+
+
+    
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////// agregar un producto a la base de datos 
     public void agregarProducto(Producto producto) {

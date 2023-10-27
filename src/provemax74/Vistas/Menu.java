@@ -264,6 +264,16 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMBDPActionPerformed
 
+    private void jMBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBCActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        BuscarComprasPorProveedor gdp = new  BuscarComprasPorProveedor();
+        gdp.setVisible(true);
+        escritorio.add(gdp);
+        escritorio.moveToFront(gdp);
+    }//GEN-LAST:event_jMBCActionPerformed
+
+
 
 
     private void jMGDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDCActionPerformed

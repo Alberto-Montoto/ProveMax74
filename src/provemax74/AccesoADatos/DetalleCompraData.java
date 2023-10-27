@@ -246,16 +246,32 @@ public class DetalleCompraData {
 //    return producto;
 //}
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+public List<DetalleCompra> listarDetalleCompraPorProveedor(int idProveedor) {
+    List<DetalleCompra> detalles = new ArrayList<>();
+
+    try {
+        String consulta = "SELECT idProducto, cantidad, precioCosto FROM detallecompra WHERE idProveedor = ?";
+        PreparedStatement ps = con.prepareStatement(consulta);
+        ps.setInt(1, idProveedor);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            DetalleCompra detalle = new DetalleCompra();
+            detalle.setIdProducto(rs.getInt("idProducto"));
+            detalle.setCantidad(rs.getInt("cantidad"));
+            detalle.setPrecioCosto(rs.getDouble("precioCosto"));
+
+            detalles.add(detalle);
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        // Manejo de errores aquí
+        ex.printStackTrace();
+    }
+
+    return detalles;
+}
     
     
     public List<DetalleCompra> listarDetalleCompra(){
@@ -285,7 +301,37 @@ public class DetalleCompraData {
             return detalleCompras;
         
     }
+public List<DetalleCompra> listarDetalleCompraPorCompra(int idCompra) {
+    List<DetalleCompra> detalles = new ArrayList<>();
 
+    String query = "SELECT cantidad, precioCosto, idProducto FROM detallecompra WHERE idCompra = ?";
+    try (PreparedStatement statement = con.prepareStatement(query)) {
+        statement.setInt(1, idCompra);
+
+        try (ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                DetalleCompra detalle = new DetalleCompra();
+                detalle.setCantidad(resultSet.getInt("cantidad"));
+                detalle.setPrecioCosto(resultSet.getDouble("precioCosto"));
+
+                // Obtén el producto asociado al detalle utilizando su ID de producto
+                int idProducto = resultSet.getInt("idProducto");
+                Producto producto = new Producto();  // Utiliza el constructor sin parámetros
+
+                // Asigna el ID del producto (supongo que hay un método setIdProducto en la clase Producto)
+                producto.setIdProducto(idProducto);
+
+                detalle.setProducto(producto);
+
+                detalles.add(detalle);
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return detalles;
+}
    
     
 }

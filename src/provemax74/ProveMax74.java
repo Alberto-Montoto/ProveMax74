@@ -27,7 +27,7 @@ public class ProveMax74 {
 
         //////metodo agregarProducto//////
 //                                   idpro/nombreP/descrip/precioAct/Stok/estado
-//  Producto arroz = new Producto(333, "azucar", "morena", 123, 50, true);
+  Producto producto = new Producto();
         ProductoData pro = new ProductoData();
 //        pro.agregarProducto(arroz);
 
@@ -167,8 +167,8 @@ public class ProveMax74 {
         DetalleCompraData dcd = new DetalleCompraData();
         CompraData cd = new CompraData();
 //        
-        Proveedor prove=pd.buscarProveedor(7);
-        DetalleCompra det=dcd.buscarDetalle(501);
+//        Proveedor prove=pd.buscarProveedor(7);
+//        DetalleCompra det=dcd.buscarDetalle(501);
 //        
 //        
         String fechaString = "11/10/2023";
