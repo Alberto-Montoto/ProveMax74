@@ -5,6 +5,12 @@
  */
 package provemax74.Vistas;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
 /**
  *
  * @author maria
@@ -27,7 +33,17 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icono=new ImageIcon(getClass().getResource("/provemax74/recursos/imagen.jpg"));
+        Image miImagen=icono.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+
+            public void paintComponent(Graphics g){
+
+                g.drawImage(miImagen, 0, 0, getWidth(), getHeight(),this);
+
+            }
+
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMGDP = new javax.swing.JMenu();
         jMGDProd = new javax.swing.JMenuItem();
@@ -37,15 +53,13 @@ public class Menu extends javax.swing.JFrame {
         jMGDProv = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMGDC = new javax.swing.JMenuItem();
-        jMBPC = new javax.swing.JMenuItem();
-        jMBC = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMProductosComprados = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        jMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,7 +67,7 @@ public class Menu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, 1200, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -62,7 +76,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMGDP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/home-appliance.png"))); // NOI18N
         jMGDP.setText("  Producto  ");
-        jMGDP.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMGDP.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jMGDP.setPreferredSize(new java.awt.Dimension(200, 60));
         jMGDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +84,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jMGDProd.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMGDProd.setText("Gestión de Productos");
         jMGDProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +93,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jMGDP.add(jMGDProd);
 
+        jMBDP.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMBDP.setText("Busqueda de Producto");
         jMBDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +102,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jMGDP.add(jMBDP);
 
+        jMPDBS.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMPDBS.setText("Productos de bajo Stock");
         jMPDBS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,9 +115,10 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/proveedor (1).png"))); // NOI18N
         jMenu2.setText("  Proveedor  ");
-        jMenu2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMenu2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jMenu2.setPreferredSize(new java.awt.Dimension(200, 60));
 
+        jMGDProv.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMGDProv.setText("Gestión de Proveedores");
         jMGDProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,9 +131,10 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/anadir-al-carrito (1).png"))); // NOI18N
         jMenu4.setText("  Compra  ");
-        jMenu4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMenu4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jMenu4.setPreferredSize(new java.awt.Dimension(200, 60));
 
+        jMGDC.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMGDC.setText("Gestión de Detalle");
         jMGDC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,29 +143,14 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu4.add(jMGDC);
 
-        jMBPC.setText("Buscar Productos Comprados");
-        jMBPC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMBPCActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMBPC);
-
-        jMBC.setText("Buscar Compras por Proveedor");
-        jMBC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMBCActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMBC);
-
         jMenuBar1.add(jMenu4);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/dueno-de-la-tienda.png"))); // NOI18N
         jMenu1.setText("Detalle");
-        jMenu1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMenu1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jMenu1.setPreferredSize(new java.awt.Dimension(200, 60));
 
+        jMenuItem1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMenuItem1.setText("Gestión de Detalle de Compras");
         jMenu1.add(jMenuItem1);
 
@@ -154,17 +158,19 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/consulta.png"))); // NOI18N
         jMenu3.setText("Consultas");
-        jMenu3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMenu3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(200, 60));
 
-        jMenuItem2.setText("Productos Comprados");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMProductosComprados.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMProductosComprados.setText("Productos Comprados");
+        jMProductosComprados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMProductosCompradosActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        jMenu3.add(jMProductosComprados);
 
+        jMenuItem3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMenuItem3.setText("Lista de  Compra a Proveedores");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,21 +179,27 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem3);
 
+        jMenuItem4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMenuItem4.setText("Productos debajo del stock mínimo");
         jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar-sesion (1).png"))); // NOI18N
-        jMenu5.setText("  Salir  ");
-        jMenu5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMenu5.setPreferredSize(new java.awt.Dimension(200, 60));
-        jMenu5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu5ActionPerformed(evt);
+        jMSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cerrar-sesion (1).png"))); // NOI18N
+        jMSalir.setText("  Salir  ");
+        jMSalir.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jMSalir.setPreferredSize(new java.awt.Dimension(200, 60));
+        jMSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMSalirMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu5);
+        jMSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSalirActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMSalir);
 
         setJMenuBar(jMenuBar1);
 
@@ -204,12 +216,6 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0); //Esto se usa para salir del menu
-        
-    }//GEN-LAST:event_jMenu5ActionPerformed
 
     private void jMPDBSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPDBSActionPerformed
         // TODO add your handling code here:
@@ -257,32 +263,38 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(bdp);
         
     }//GEN-LAST:event_jMBDPActionPerformed
-    private void jMBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBCActionPerformed
-                escritorio.removeAll();
-        escritorio.repaint();
-        BuscarComprasPorProveedor gdp = new  BuscarComprasPorProveedor();
-        gdp.setVisible(true);
-        escritorio.add(gdp);
-        escritorio.moveToFront(gdp);
-    }//GEN-LAST:event_jMBCActionPerformed
 
 
-
-    private void jMBPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBPCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMBPCActionPerformed
 
     private void jMGDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMGDCActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMProductosCompradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProductosCompradosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        ProductosComprados prodComp = new ProductosComprados();
+        prodComp.setVisible(true);
+        prodComp.getContentPane().setBackground(new Color(131,193,227));
+        escritorio.add(prodComp);
+        
+    }//GEN-LAST:event_jMProductosCompradosActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
+        // TODO add your handling code here:
+       this.dispose();
+    }//GEN-LAST:event_jMSalirActionPerformed
+
+    private void jMSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMSalirMouseClicked
+        // TODO add your handling code here:
+         System.exit(0); //Esto se usa para salir del menu
+    }//GEN-LAST:event_jMSalirMouseClicked
 
 
     /**
@@ -322,22 +334,20 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenuItem jMBC;
     private javax.swing.JMenuItem jMBDP;
-    private javax.swing.JMenuItem jMBPC;
     private javax.swing.JMenuItem jMGDC;
     private javax.swing.JMenu jMGDP;
     private javax.swing.JMenuItem jMGDProd;
     private javax.swing.JMenuItem jMGDProv;
     private javax.swing.JMenuItem jMPDBS;
+    private javax.swing.JMenuItem jMProductosComprados;
+    private javax.swing.JMenu jMSalir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables

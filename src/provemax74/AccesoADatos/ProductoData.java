@@ -609,5 +609,44 @@ public class ProductoData {
     return fechaFin;
 
 }
+    
+      public List<Producto> obtenerProductosCompradosPorFecha(LocalDate fecha)  {
+     
+        List<Producto> productosCompradosPorFecha = new ArrayList<>();
+
+        // Consulta SQL para obtener los productos de una compra en fecha especifica
+        String sql = "SELECT p.idProducto, p.nombreProducto, p.descripcion, p.precioActual, p.stock, p.estado "
+        + "FROM producto p "
+        + "INNER JOIN detalleCompra dc ON p.idProducto = dc.idProducto "
+        + "INNER JOIN compra c ON dc.idCompra = c.idCompra "
+        + "INNER JOIN proveedor pr ON c.idProveedor = pr.idProveedor "
+        + "WHERE c.fecha = ? ";
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            
+         
+          ps.setDate(1, Date.valueOf(fecha) );
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Producto producto = new Producto();
+                    producto.setIdProducto(rs.getInt("idProducto"));
+                    producto.setNombreProducto(rs.getString("nombreProducto"));
+                    producto.setDescripcion(rs.getString("descripcion"));
+                    producto.setPrecioActual(rs.getDouble("precioActual"));
+                    producto.setStock(rs.getInt("stock"));
+                    producto.setestado(rs.getBoolean("estado"));
+
+                    productosCompradosPorFecha.add(producto);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return productosCompradosPorFecha;
+    }
+    
+    
 }
 
