@@ -69,24 +69,24 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(1217, 778));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Lista de Productos");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setText("Elegir fecha:");
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel3.setText("Elegir fecha 1:");
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel4.setText("Elegir fecha 2:");
 
         buttonGroup1.add(jRBporFecha);
-        jRBporFecha.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jRBporFecha.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jRBporFecha.setText("Por fecha:");
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jRadioButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jRadioButton2.setText("Más comprados");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +95,7 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         });
 
         buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jRadioButton3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jRadioButton3.setText("De la última compra");
 
         jTproductos.setModel(new javax.swing.table.DefaultTableModel(
@@ -153,10 +153,6 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(516, 516, 516))
             .addGroup(layout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addComponent(jScrollPane1)
-                .addGap(455, 455, 455))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButton3)
@@ -168,13 +164,13 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                             .addComponent(jRadioButton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDCfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
-                        .addGap(31, 31, 31)
+                            .addComponent(jDCfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(68, 68, 68)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43))))
+                        .addGap(188, 188, 188))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -189,8 +185,11 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addComponent(jRBporFecha)))
-                .addGap(293, 293, 293))
+                        .addComponent(jRBporFecha))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(370, 370, 370)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(450, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,25 +205,21 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4))
-                            .addComponent(jRadioButton2))
-                        .addGap(48, 48, 48)
-                        .addComponent(jRadioButton3)
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 210, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jRadioButton2)
+                            .addComponent(jLabel4)
                             .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(75, 75, 75))))
+                        .addGap(46, 46, 46)
+                        .addComponent(jRadioButton3))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(75, 75, 75))
         );
 
         pack();

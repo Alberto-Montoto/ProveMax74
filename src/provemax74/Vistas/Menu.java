@@ -17,11 +17,10 @@ import javax.swing.JFrame;
  */
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
+ 
     public Menu() {
         initComponents();
+        
     }
 
     /**
@@ -224,7 +223,9 @@ public class Menu extends javax.swing.JFrame {
         ProductosDeBajoStock pbs = new ProductosDeBajoStock();
         pbs.setVisible(true);
         escritorio.add(pbs);
+          pbs.getContentPane().setBackground(new Color(131,193,227));
         escritorio.moveToFront(pbs);
+
     }//GEN-LAST:event_jMPDBSActionPerformed
 
     private void jMGDProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDProdActionPerformed
@@ -233,6 +234,7 @@ public class Menu extends javax.swing.JFrame {
         escritorio.repaint();
         GestionDeProducto gdp = new GestionDeProducto();
         gdp.setVisible(true);
+            gdp.getContentPane().setBackground(new Color(131,193,227));
         escritorio.add(gdp);
         escritorio.moveToFront(gdp);
         
@@ -249,8 +251,10 @@ public class Menu extends javax.swing.JFrame {
         escritorio.repaint();
         GestionDeProveedores gdp = new  GestionDeProveedores();
         gdp.setVisible(true);
+          gdp.getContentPane().setBackground(new Color(131,193,227));
         escritorio.add(gdp);
         escritorio.moveToFront(gdp);
+
     }//GEN-LAST:event_jMGDProvActionPerformed
 
     private void jMBDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBDPActionPerformed
@@ -258,19 +262,15 @@ public class Menu extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         BusquedaDeProducto bdp = new BusquedaDeProducto();
-        bdp.setVisible(true);
+        bdp.setVisible(true); 
+        bdp.getContentPane().setBackground(new Color(131,193,227));
         escritorio.add(bdp);
         escritorio.moveToFront(bdp);
-        
+                
     }//GEN-LAST:event_jMBDPActionPerformed
 
     private void jMBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBCActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        BuscarComprasPorProveedor gdp = new  BuscarComprasPorProveedor();
-        gdp.setVisible(true);
-        escritorio.add(gdp);
-        escritorio.moveToFront(gdp);
+
     }//GEN-LAST:event_jMBCActionPerformed
 
 
@@ -293,7 +293,22 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMProductosCompradosActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        BuscarComprasPorProveedor gdp = new  BuscarComprasPorProveedor();
+         gdp.setVisible(true);
+        escritorio.add(gdp);
+        escritorio.moveToFront(gdp);
+
+
+
+//               escritorio.removeAll();
+//        escritorio.repaint();
+//        BuscarComprasPorProveedor gdp = new  BuscarComprasPorProveedor();
+//        gdp.setVisible(true);
+//        escritorio.add(gdp);
+//        escritorio.moveToFront(gdp);
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
