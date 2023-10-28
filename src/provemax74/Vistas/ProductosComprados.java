@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import provemax74.AccesoADatos.ProductoData;
 import provemax74.Entidades.Producto;
@@ -30,12 +31,15 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
     /**
      * Creates new form ProductosComprados
      */
+   
+    
+    
     public ProductosComprados() {
         initComponents();
         
-           prodData =new ProductoData();
-  
-        modelo=new DefaultTableModel();
+        prodData = new ProductoData();
+        modelo = new DefaultTableModel();
+        
         
         armarCabeceraTabla();
     }
@@ -55,16 +59,16 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jRBporFecha = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jRBentreFechas = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTproductos = new javax.swing.JTable();
         jBbuscar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jBlimpiar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDC1 = new com.toedter.calendar.JDateChooser();
         jDCfecha = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jDC2 = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(1217, 778));
@@ -89,8 +93,14 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         jRadioButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jRadioButton2.setText("Más comprados");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+
+        buttonGroup1.add(jRBentreFechas);
+        jRBentreFechas.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jRBentreFechas.setText("Más comprados");
+        jRBentreFechas.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                jRBentreFechasActionPerformed(evt);
             }
         });
 
@@ -138,11 +148,11 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
             }
         });
 
-        jDateChooser1.setPreferredSize(new java.awt.Dimension(120, 30));
+        jDC1.setPreferredSize(new java.awt.Dimension(120, 30));
 
         jDCfecha.setPreferredSize(new java.awt.Dimension(120, 30));
 
-        jDateChooser3.setPreferredSize(new java.awt.Dimension(120, 30));
+        jDC2.setPreferredSize(new java.awt.Dimension(120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,9 +171,10 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(345, 345, 345)
                                 .addComponent(jLabel3))
-                            .addComponent(jRadioButton2))
+                            .addComponent(jRBentreFechas))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+
                             .addComponent(jDCfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(68, 68, 68)
@@ -171,6 +182,15 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(188, 188, 188))))
+
+                            .addComponent(jDCfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDC1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDC2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))))
+
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -205,6 +225,7 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
                             .addComponent(jLabel3)
                             .addComponent(jRadioButton2)
                             .addComponent(jLabel4)
@@ -220,14 +241,35 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                     .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75))
+
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4))
+                            .addComponent(jRBentreFechas))
+                        .addGap(48, 48, 48)
+                        .addComponent(jRadioButton3)
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 210, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDC2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(75, 75, 75))))
+
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void jRBentreFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBentreFechasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_jRBentreFechasActionPerformed
 
     private void armarCabeceraTabla(){
         ArrayList<Object> filaCabecera=new ArrayList<>();
@@ -245,7 +287,7 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
     }
     
     
-     private void borrarFilas() {
+    private void borrarFilas() {
         int indice = modelo.getRowCount() - 1;
         for (int i = indice; i >= 0; i--) {
             modelo.removeRow(i);
@@ -253,18 +295,54 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         jRBporFecha.setSelected(false);
     }
     
-      private void cargarProductosPorFecha(){
-        
-       LocalDate localDate= jDCfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-       
-     listaProd=prodData.obtenerProductosCompradosPorFecha(localDate);
-     
+     private void cargarProductosPorFecha() {
+
+        LocalDate localDate = jDCfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        listaProd = prodData.obtenerProductosCompradosPorFecha(localDate);
+
         for (Producto p : listaProd) {
-            
-            modelo.addRow(new Object[] {p.getIdProducto(), p.getNombreProducto(),p.getDescripcion(), p.getPrecioActual(), p.getStock(), p.estado()});
-            
+
+            modelo.addRow(new Object[]{p.getIdProducto(), p.getNombreProducto(), p.getDescripcion(), p.getPrecioActual(), p.getStock(), p.estado()});
+
         }
-   
+
+    }
+      
+      private void cargarProductosEntreFechas() {
+        int filas = modelo.getRowCount();
+        for (int i = filas - 1; i >= 0; i--) {
+            modelo.removeRow(i);
+        }
+
+        try {
+            if ((jDC1 != null) && (jDC2 != null)) {
+
+                LocalDate fecha1 = jDC1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                LocalDate fecha2 = jDC2.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                List<Producto> productos = prodData.listarProductosEntreFechas(fecha1, fecha2);
+
+                if (fecha2.isBefore(fecha1)) {
+                    // La fecha 2 es anterior a la fecha 1, muestra una advertencia.
+                    JOptionPane.showMessageDialog(null, "La segunda fecha no puede ser anterior a la primera fecha.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                } else {
+
+                    for (Producto producto : productos) {
+
+                        modelo.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
+                            producto.getPrecioActual(), prodData.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2).values()});
+
+                    }
+
+                }
+
+            }
+
+        } catch (NullPointerException np) {
+            JOptionPane.showMessageDialog(this, "Falta ingresar una fecha", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+
     }
     
   
@@ -272,9 +350,13 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
          if (jRBporFecha.isSelected()) {
+             
             cargarProductosPorFecha();
-        } else {
+            
+        } else if (jRBentreFechas.isSelected()) {
             //============== ACA AGREGAR EL METODO DE LOS PRODUCTOS MAS COMPRADOS ENTRE FECHA=============
+  
+           cargarProductosEntreFechas();
         }
  
     }//GEN-LAST:event_jBbuscarActionPerformed
@@ -296,15 +378,15 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBbuscar;
     private javax.swing.JButton jBlimpiar;
     private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JDateChooser jDC1;
+    private com.toedter.calendar.JDateChooser jDC2;
     private com.toedter.calendar.JDateChooser jDCfecha;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton jRBentreFechas;
     private javax.swing.JRadioButton jRBporFecha;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTproductos;

@@ -253,7 +253,11 @@ public class Menu extends javax.swing.JFrame {
         gdp.setVisible(true);
           gdp.getContentPane().setBackground(new Color(131,193,227));
         escritorio.add(gdp);
+
         escritorio.moveToFront(gdp);
+
+
+       escritorio.moveToFront(gdp);
 
     }//GEN-LAST:event_jMGDProvActionPerformed
 
