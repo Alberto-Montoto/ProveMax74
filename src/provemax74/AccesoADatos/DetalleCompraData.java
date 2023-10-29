@@ -304,7 +304,9 @@ public List<DetalleCompra> listarDetalleCompraPorProveedor(int idProveedor) {
 public List<DetalleCompra> listarDetalleCompraPorCompra(int idCompra) {
     List<DetalleCompra> detalles = new ArrayList<>();
 
-    String query = "SELECT cantidad, precioCosto, idProducto FROM detallecompra WHERE idCompra = ?";
+    String query =  "SELECT cantidad, precioCosto, producto.idProducto, producto.nombreProducto, producto.descripcion "
+        + "FROM detallecompra JOIN producto ON detallecompra.idProducto=producto.idProducto "
+        + "WHERE idCompra=?";
     try (PreparedStatement statement = con.prepareStatement(query)) {
         statement.setInt(1, idCompra);
 
@@ -315,11 +317,13 @@ public List<DetalleCompra> listarDetalleCompraPorCompra(int idCompra) {
                 detalle.setPrecioCosto(resultSet.getDouble("precioCosto"));
 
                 // Obtén el producto asociado al detalle utilizando su ID de producto
-                int idProducto = resultSet.getInt("idProducto");
+              //  int idProducto = resultSet.getInt("idProducto");
                 Producto producto = new Producto();  // Utiliza el constructor sin parámetros
 
                 // Asigna el ID del producto (supongo que hay un método setIdProducto en la clase Producto)
-                producto.setIdProducto(idProducto);
+                producto.setIdProducto(resultSet.getInt("idProducto"));
+                producto.setNombreProducto(resultSet.getString("nombreProducto"));
+                producto.setDescripcion(resultSet.getString("descripcion"));
 
                 detalle.setProducto(producto);
 

@@ -5,12 +5,17 @@
  */
 package provemax74.Vistas;
 
+import java.awt.Font;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import provemax74.AccesoADatos.ProductoData;
 import provemax74.Entidades.Producto;
 
@@ -27,21 +32,36 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
     private Producto prod;
 
     private DefaultTableModel modelo;
-
+    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+ 
     /**
      * Creates new form ProductosComprados
      */
-   
-    
-    
+ 
     public ProductosComprados() {
         initComponents();
         
         prodData = new ProductoData();
-        modelo = new DefaultTableModel();
         
-        
+        modelo = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int i, int i1) {
+            return false;
+        }
+    };
+   
         armarCabeceraTabla();
+        jTproductos.getColumnModel().getColumn(1).setPreferredWidth(230); //Para agrandar el ancho de columan de nombre de producto
+        jTproductos.getColumnModel().getColumn(2).setPreferredWidth(200); //Para agrandar el ancho de columan de descripcion
+        jTproductos.getColumnModel().getColumn(3).setPreferredWidth(200); //Para agrandar el ancho de columan de precio
+        jTproductos.getColumnModel().getColumn(5).setPreferredWidth(100); //Para agrandar el ancho de columan de estado
+       
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            //centerRenderer.setFont(centerRenderer.getFont().deriveFont(Font.BOLD));
+            
+             for (int i = 0; i < jTproductos.getColumnModel().getColumnCount(); i++) {
+                jTproductos.getColumnModel().getColumn(i).setHeaderRenderer(centerRenderer);
+            }
     }
 
     /**
@@ -60,7 +80,7 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jRBporFecha = new javax.swing.JRadioButton();
         jRBentreFechas = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        jRBultimaComp = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTproductos = new javax.swing.JTable();
         jBbuscar = new javax.swing.JButton();
@@ -71,46 +91,47 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         jDC2 = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(1217, 778));
+        setPreferredSize(new java.awt.Dimension(1212, 738));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel1.setText("Lista de Productos");
-        getContentPane().add(jLabel1);
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel1.setText("Lista de Productos Comprados");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel2.setText("Elegir fecha:");
-        getContentPane().add(jLabel2);
+        jLabel2.setPreferredSize(new java.awt.Dimension(146, 23));
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel3.setText("Elegir fecha 1:");
-        getContentPane().add(jLabel3);
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel4.setText("Elegir fecha 2:");
-        getContentPane().add(jLabel4);
 
         buttonGroup1.add(jRBporFecha);
-        jRBporFecha.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jRBporFecha.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jRBporFecha.setText("Por fecha:");
-        getContentPane().add(jRBporFecha);
 
         buttonGroup1.add(jRBentreFechas);
-        jRBentreFechas.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jRBentreFechas.setText("Más comprados");
+        jRBentreFechas.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jRBentreFechas.setText("Más comprados:");
         jRBentreFechas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBentreFechasActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBentreFechas);
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jRadioButton3.setText("De la última compra");
-        getContentPane().add(jRadioButton3);
+        buttonGroup1.add(jRBultimaComp);
+        jRBultimaComp.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jRBultimaComp.setText("Última compra");
 
+        jTproductos.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jTproductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -120,48 +141,119 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTproductos.setIntercellSpacing(new java.awt.Dimension(5, 5));
+        jTproductos.setPreferredSize(new java.awt.Dimension(100, 100));
+        jTproductos.setRowHeight(30);
         jScrollPane1.setViewportView(jTproductos);
-
-        getContentPane().add(jScrollPane1);
+        if (jTproductos.getColumnModel().getColumnCount() > 0) {
+            jTproductos.getColumnModel().getColumn(0).setResizable(false);
+            jTproductos.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         jBbuscar.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jBbuscar.setText("Buscar");
-        jBbuscar.setPreferredSize(new java.awt.Dimension(150, 80));
+        jBbuscar.setPreferredSize(new java.awt.Dimension(150, 70));
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBbuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBbuscar);
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jButton2.setText("Salir");
-        jButton2.setPreferredSize(new java.awt.Dimension(150, 80));
+        jButton2.setPreferredSize(new java.awt.Dimension(150, 70));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
 
         jBlimpiar.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jBlimpiar.setText("Limpiar");
-        jBlimpiar.setPreferredSize(new java.awt.Dimension(150, 80));
+        jBlimpiar.setPreferredSize(new java.awt.Dimension(150, 70));
         jBlimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBlimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBlimpiar);
 
-        jDC1.setPreferredSize(new java.awt.Dimension(120, 30));
-        getContentPane().add(jDC1);
+        jDC1.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jDCfecha.setPreferredSize(new java.awt.Dimension(120, 30));
-        getContentPane().add(jDCfecha);
+        jDCfecha.setPreferredSize(new java.awt.Dimension(200, 30));
 
-        jDC2.setPreferredSize(new java.awt.Dimension(120, 30));
-        getContentPane().add(jDC2);
+        jDC2.setPreferredSize(new java.awt.Dimension(200, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(213, 213, 213))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(400, 400, 400))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRBporFecha)
+                            .addComponent(jRBultimaComp)
+                            .addComponent(jRBentreFechas))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDCfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDC1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel4)
+                        .addGap(10, 10, 10)
+                        .addComponent(jDC2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(261, 261, 261)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                        .addGap(256, 256, 256)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jDCfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRBporFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDC2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRBentreFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(jRBultimaComp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -169,6 +261,37 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
     private void jRBentreFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBentreFechasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRBentreFechasActionPerformed
+
+    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+        // TODO add your handling code here:
+        
+        if (jRBporFecha.isSelected()) {
+
+            cargarProductosPorFecha();
+
+        } else if (jRBentreFechas.isSelected()) {
+            //=======METODO para buscar los productos más comprados entre fechas =============
+            cargarProductosEntreFechas();
+        } else if (jRBultimaComp.isSelected()) {
+           //=======METODO para buscar los productos de la última compra =============
+            cargarProductosUltimaCompra();
+        }
+        
+    }//GEN-LAST:event_jBbuscarActionPerformed
+
+    private void jBlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarActionPerformed
+        // TODO add your handling code here:
+        borrarFilas();
+        jDCfecha.setDate(null);
+        jDC1.setDate(null);
+        jDC2.setDate(null);
+
+    }//GEN-LAST:event_jBlimpiarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void armarCabeceraTabla(){
         ArrayList<Object> filaCabecera=new ArrayList<>();
@@ -178,14 +301,13 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         filaCabecera.add("Precio Unitario");
         filaCabecera.add("Stock");
         filaCabecera.add("Estado");
-        
-        for (Object it: filaCabecera) {
-        modelo.addColumn(it);
-        jTproductos.setModel(modelo);
+        for (Object it : filaCabecera) {
+            modelo.addColumn(it);
+            jTproductos.setModel(modelo);
+       
         }
     }
-    
-    
+ 
     private void borrarFilas() {
         int indice = modelo.getRowCount() - 1;
         for (int i = indice; i >= 0; i--) {
@@ -196,23 +318,22 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
     
      private void cargarProductosPorFecha() {
 
-        LocalDate localDate = jDCfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+         LocalDate fecha = jDCfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-        listaProd = prodData.obtenerProductosCompradosPorFecha(localDate);
+         listaProd = prodData.obtenerProductosCompradosPorFecha(fecha);
 
-        for (Producto p : listaProd) {
+         for (Producto p : listaProd) {
 
-            modelo.addRow(new Object[]{p.getIdProducto(), p.getNombreProducto(), p.getDescripcion(), p.getPrecioActual(), p.getStock(), p.estado()});
-
+             modelo.addRow(new Object[]{p.getIdProducto(), p.getNombreProducto(), p.getDescripcion(), p.getPrecioActual(), p.getStock(), p.estado()});
+             jTproductos.setDefaultRenderer(Object.class, centerRenderer); //para centrar los valores en las celdas de la tabla
         }
-
     }
       
       private void cargarProductosEntreFechas() {
-        int filas = modelo.getRowCount();
-        for (int i = filas - 1; i >= 0; i--) {
-            modelo.removeRow(i);
-        }
+//        int filas = modelo.getRowCount();
+//        for (int i = filas - 1; i >= 0; i--) {
+//            modelo.removeRow(i);
+//        }
 
         try {
             if ((jDC1 != null) && (jDC2 != null)) {
@@ -220,57 +341,39 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                 LocalDate fecha1 = jDC1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 LocalDate fecha2 = jDC2.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-                List<Producto> productos = prodData.listarProductosEntreFechas(fecha1, fecha2);
+                listaProd = prodData.listarProductosEntreFechas(fecha1, fecha2);
 
                 if (fecha2.isBefore(fecha1)) {
                     // La fecha 2 es anterior a la fecha 1, muestra una advertencia.
                     JOptionPane.showMessageDialog(null, "La segunda fecha no puede ser anterior a la primera fecha.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 } else {
 
-                    for (Producto producto : productos) {
+                    for (Producto producto : listaProd) {
 
                         modelo.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
-                            producto.getPrecioActual(), prodData.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2).values()});
+                         producto.getPrecioActual(), prodData.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2).values()});
+                        
+                          jTproductos.setDefaultRenderer(Object.class, centerRenderer); //para centrar los valores en las celdas de la tabla
 
                     }
-
                 }
-
             }
 
         } catch (NullPointerException np) {
             JOptionPane.showMessageDialog(this, "Falta ingresar una fecha", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
-
     }
-    
-  
-    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        // TODO add your handling code here:
-        
-         if (jRBporFecha.isSelected()) {
-             
-            cargarProductosPorFecha();
-            
-        } else if (jRBentreFechas.isSelected()) {
-            //============== ACA AGREGAR EL METODO DE LOS PRODUCTOS MAS COMPRADOS ENTRE FECHA=============
-  
-           cargarProductosEntreFechas();
-        }
- 
-    }//GEN-LAST:event_jBbuscarActionPerformed
+      
+     private void cargarProductosUltimaCompra(){
+         listaProd=prodData.listarProductosDeUltimaCompra();
+         for (Producto producto : listaProd) {
 
-    private void jBlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarActionPerformed
-        // TODO add your handling code here:  
-         borrarFilas();
-        jRBporFecha.setSelected(false);
-    }//GEN-LAST:event_jBlimpiarActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+                modelo.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
+                    producto.getPrecioActual(), producto.getStock()});
+                
+                 jTproductos.setDefaultRenderer(Object.class, centerRenderer); //para centrar los valores en las celdas de la tabla
+            }
+     }  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -286,7 +389,7 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton jRBentreFechas;
     private javax.swing.JRadioButton jRBporFecha;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRBultimaComp;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTproductos;
     // End of variables declaration//GEN-END:variables

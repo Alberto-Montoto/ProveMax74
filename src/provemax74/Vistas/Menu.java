@@ -45,19 +45,19 @@ public class Menu extends javax.swing.JFrame {
         };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMGDP = new javax.swing.JMenu();
-        jMGDProd = new javax.swing.JMenuItem();
-        jMBDP = new javax.swing.JMenuItem();
-        jMPDBS = new javax.swing.JMenuItem();
+        jMGestionDeProd = new javax.swing.JMenuItem();
+        jMBusquedaDeProd = new javax.swing.JMenuItem();
+        jMProdBajoStock = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMGDProv = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMGDC = new javax.swing.JMenuItem();
+        jMGestionDeProveed = new javax.swing.JMenuItem();
+        jM3 = new javax.swing.JMenu();
+        jMGestionDeComp = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMGestionDeDetaDeComp = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMProductosComprados = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMCompraAproveed = new javax.swing.JMenuItem();
+        jMProdDebajoStockMin = new javax.swing.JMenuItem();
         jMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,32 +83,35 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jMGDProd.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMGDProd.setText("Gestión de Productos");
-        jMGDProd.addActionListener(new java.awt.event.ActionListener() {
+        jMGestionDeProd.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMGestionDeProd.setText("Gestión de Productos");
+        jMGestionDeProd.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        jMGestionDeProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGDProdActionPerformed(evt);
+                jMGestionDeProdActionPerformed(evt);
             }
         });
-        jMGDP.add(jMGDProd);
+        jMGDP.add(jMGestionDeProd);
 
-        jMBDP.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMBDP.setText("Busqueda de Producto");
-        jMBDP.addActionListener(new java.awt.event.ActionListener() {
+        jMBusquedaDeProd.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMBusquedaDeProd.setText("Busqueda de Producto");
+        jMBusquedaDeProd.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        jMBusquedaDeProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMBDPActionPerformed(evt);
+                jMBusquedaDeProdActionPerformed(evt);
             }
         });
-        jMGDP.add(jMBDP);
+        jMGDP.add(jMBusquedaDeProd);
 
-        jMPDBS.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMPDBS.setText("Productos de bajo Stock");
-        jMPDBS.addActionListener(new java.awt.event.ActionListener() {
+        jMProdBajoStock.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMProdBajoStock.setText("Productos de bajo Stock");
+        jMProdBajoStock.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        jMProdBajoStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMPDBSActionPerformed(evt);
+                jMProdBajoStockActionPerformed(evt);
             }
         });
-        jMGDP.add(jMPDBS);
+        jMGDP.add(jMProdBajoStock);
 
         jMenuBar1.add(jMGDP);
 
@@ -117,41 +120,44 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jMenu2.setPreferredSize(new java.awt.Dimension(200, 60));
 
-        jMGDProv.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMGDProv.setText("Gestión de Proveedores");
-        jMGDProv.addActionListener(new java.awt.event.ActionListener() {
+        jMGestionDeProveed.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMGestionDeProveed.setText("Gestión de Proveedores");
+        jMGestionDeProveed.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        jMGestionDeProveed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGDProvActionPerformed(evt);
+                jMGestionDeProveedActionPerformed(evt);
             }
         });
-        jMenu2.add(jMGDProv);
+        jMenu2.add(jMGestionDeProveed);
 
         jMenuBar1.add(jMenu2);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/anadir-al-carrito (1).png"))); // NOI18N
-        jMenu4.setText("  Compra  ");
-        jMenu4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jMenu4.setPreferredSize(new java.awt.Dimension(200, 60));
+        jM3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/anadir-al-carrito (1).png"))); // NOI18N
+        jM3.setText("  Compra  ");
+        jM3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jM3.setMargin(new java.awt.Insets(5, 2, 5, 2));
+        jM3.setPreferredSize(new java.awt.Dimension(200, 60));
 
-        jMGDC.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMGDC.setText("Gestión de Detalle");
-        jMGDC.addActionListener(new java.awt.event.ActionListener() {
+        jMGestionDeComp.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMGestionDeComp.setText("Gestión de Compras");
+        jMGestionDeComp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGDCActionPerformed(evt);
+                jMGestionDeCompActionPerformed(evt);
             }
         });
-        jMenu4.add(jMGDC);
+        jM3.add(jMGestionDeComp);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jM3);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/dueno-de-la-tienda.png"))); // NOI18N
         jMenu1.setText("Detalle");
         jMenu1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jMenu1.setPreferredSize(new java.awt.Dimension(200, 60));
 
-        jMenuItem1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMenuItem1.setText("Gestión de Detalle de Compras");
-        jMenu1.add(jMenuItem1);
+        jMGestionDeDetaDeComp.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMGestionDeDetaDeComp.setText("Gestión de Detalle de Compras");
+        jMGestionDeDetaDeComp.setMargin(new java.awt.Insets(4, 2, 4, 2));
+        jMenu1.add(jMGestionDeDetaDeComp);
 
         jMenuBar1.add(jMenu1);
 
@@ -162,6 +168,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMProductosComprados.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMProductosComprados.setText("Productos Comprados");
+        jMProductosComprados.setMargin(new java.awt.Insets(4, 2, 4, 2));
         jMProductosComprados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMProductosCompradosActionPerformed(evt);
@@ -169,18 +176,25 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu3.add(jMProductosComprados);
 
-        jMenuItem3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMenuItem3.setText("Lista de  Compra a Proveedores");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMCompraAproveed.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMCompraAproveed.setText("Compra a Proveedores");
+        jMCompraAproveed.setMargin(new java.awt.Insets(4, 2, 4, 2));
+        jMCompraAproveed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMCompraAproveedActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        jMenu3.add(jMCompraAproveed);
 
-        jMenuItem4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMenuItem4.setText("Productos debajo del stock mínimo");
-        jMenu3.add(jMenuItem4);
+        jMProdDebajoStockMin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jMProdDebajoStockMin.setText("Productos debajo del stock mínimo");
+        jMProdDebajoStockMin.setMargin(new java.awt.Insets(4, 2, 4, 2));
+        jMProdDebajoStockMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMProdDebajoStockMinActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMProdDebajoStockMin);
 
         jMenuBar1.add(jMenu3);
 
@@ -216,52 +230,49 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMPDBSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPDBSActionPerformed
+    private void jMProdBajoStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProdBajoStockActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
         ProductosDeBajoStock pbs = new ProductosDeBajoStock();
         pbs.setVisible(true);
         escritorio.add(pbs);
-          pbs.getContentPane().setBackground(new Color(131,193,227));
+        pbs.getContentPane().setBackground(new Color(131, 193, 227));
         escritorio.moveToFront(pbs);
 
-    }//GEN-LAST:event_jMPDBSActionPerformed
+    }//GEN-LAST:event_jMProdBajoStockActionPerformed
 
-    private void jMGDProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDProdActionPerformed
+    private void jMGestionDeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestionDeProdActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
         GestionDeProducto gdp = new GestionDeProducto();
         gdp.setVisible(true);
-            gdp.getContentPane().setBackground(new Color(131,193,227));
+        gdp.getContentPane().setBackground(new Color(131, 193, 227));
         escritorio.add(gdp);
         escritorio.moveToFront(gdp);
         
-    }//GEN-LAST:event_jMGDProdActionPerformed
+    }//GEN-LAST:event_jMGestionDeProdActionPerformed
 
 
     private void jMGDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMGDPActionPerformed
 
-    private void jMGDProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDProvActionPerformed
+    private void jMGestionDeProveedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestionDeProveedActionPerformed
                // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        GestionDeProveedores gdp = new  GestionDeProveedores();
+        GestionDeProveedores gdp = new GestionDeProveedores();
         gdp.setVisible(true);
-          gdp.getContentPane().setBackground(new Color(131,193,227));
+        gdp.getContentPane().setBackground(new Color(131, 193, 227));
         escritorio.add(gdp);
-
         escritorio.moveToFront(gdp);
+        //escritorio.moveToFront(gdp);
 
+    }//GEN-LAST:event_jMGestionDeProveedActionPerformed
 
-       escritorio.moveToFront(gdp);
-
-    }//GEN-LAST:event_jMGDProvActionPerformed
-
-    private void jMBDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBDPActionPerformed
+    private void jMBusquedaDeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBusquedaDeProdActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
@@ -271,18 +282,16 @@ public class Menu extends javax.swing.JFrame {
         escritorio.add(bdp);
         escritorio.moveToFront(bdp);
                 
-    }//GEN-LAST:event_jMBDPActionPerformed
+    }//GEN-LAST:event_jMBusquedaDeProdActionPerformed
 
     private void jMBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBCActionPerformed
 
     }//GEN-LAST:event_jMBCActionPerformed
 
 
-
-
-    private void jMGDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGDCActionPerformed
+    private void jMGestionDeCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestionDeCompActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMGDCActionPerformed
+    }//GEN-LAST:event_jMGestionDeCompActionPerformed
 
     private void jMProductosCompradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProductosCompradosActionPerformed
         // TODO add your handling code here:
@@ -296,7 +305,7 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMProductosCompradosActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMCompraAproveedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCompraAproveedActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         BuscarComprasPorProveedor gdp = new  BuscarComprasPorProveedor();
@@ -313,7 +322,7 @@ public class Menu extends javax.swing.JFrame {
 //        escritorio.add(gdp);
 //        escritorio.moveToFront(gdp);
 
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMCompraAproveedActionPerformed
 
     private void jMSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSalirActionPerformed
         // TODO add your handling code here:
@@ -324,6 +333,17 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
          System.exit(0); //Esto se usa para salir del menu
     }//GEN-LAST:event_jMSalirMouseClicked
+
+    private void jMProdDebajoStockMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProdDebajoStockMinActionPerformed
+        // TODO add your handling code here:
+         escritorio.removeAll();
+        escritorio.repaint();
+        ProductosDeBajoStock pbs = new ProductosDeBajoStock();
+        pbs.setVisible(true);
+        escritorio.add(pbs);
+        pbs.getContentPane().setBackground(new Color(131, 193, 227));
+        escritorio.moveToFront(pbs);
+    }//GEN-LAST:event_jMProdDebajoStockMinActionPerformed
 
 
     /**
@@ -363,21 +383,21 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenuItem jMBDP;
-    private javax.swing.JMenuItem jMGDC;
+    private javax.swing.JMenu jM3;
+    private javax.swing.JMenuItem jMBusquedaDeProd;
+    private javax.swing.JMenuItem jMCompraAproveed;
     private javax.swing.JMenu jMGDP;
-    private javax.swing.JMenuItem jMGDProd;
-    private javax.swing.JMenuItem jMGDProv;
-    private javax.swing.JMenuItem jMPDBS;
+    private javax.swing.JMenuItem jMGestionDeComp;
+    private javax.swing.JMenuItem jMGestionDeDetaDeComp;
+    private javax.swing.JMenuItem jMGestionDeProd;
+    private javax.swing.JMenuItem jMGestionDeProveed;
+    private javax.swing.JMenuItem jMProdBajoStock;
+    private javax.swing.JMenuItem jMProdDebajoStockMin;
     private javax.swing.JMenuItem jMProductosComprados;
     private javax.swing.JMenu jMSalir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }

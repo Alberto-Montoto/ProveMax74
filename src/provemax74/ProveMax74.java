@@ -124,7 +124,7 @@ public class ProveMax74 {
       
         
 //       Proveedor prove=new Proveedor();
-         ProveedorData proveData=new ProveedorData();
+         //ProveedorData proveData=new ProveedorData();
 //          
 //          //proveData.guardarProveedor(prove);
 //          
@@ -163,17 +163,17 @@ public class ProveMax74 {
 //        detalleData.modificarDetalle(detalle);
 
 //AGREGAR COMPRAS
-        ProveedorData pd = new ProveedorData();
-        DetalleCompraData dcd = new DetalleCompraData();
-        CompraData cd = new CompraData();
+//        ProveedorData pd = new ProveedorData();
+//        DetalleCompraData dcd = new DetalleCompraData();
+//        CompraData cd = new CompraData();
 //        
 //        Proveedor prove=pd.buscarProveedor(7);
 //        DetalleCompra det=dcd.buscarDetalle(501);
 //        
 //        
-        String fechaString = "11/10/2023";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fecha = LocalDate.parse(fechaString, formatter);
+//        String fechaString = "11/10/2023";
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        LocalDate fecha = LocalDate.parse(fechaString, formatter);
 //        
  //       Compra compra=new Compra(1, 111, fecha, 10, prove, det);
         
@@ -183,24 +183,24 @@ public class ProveMax74 {
         
         //        Producto prod = new Producto(222, "fideos", "tirabuzon", 200, 100, true); //
 
-        ProductoData prodat = new ProductoData();
+//        ProductoData prodat = new ProductoData();
 //        prodat.obtenerProducto(1);
 
  //       Producto pro = prodat.obtenerProducto(111);
 
 //        DetalleCompra detalle = new DetalleCompra(2, 7, pro); //2, 56, pro.getPrecioActual(), pro.getIdProducto(), pro.getNombreProducto()
-        DetalleCompraData detalleData = new DetalleCompraData();
+//        DetalleCompraData detalleData = new DetalleCompraData();
 
 //        DetalleCompra detalle = detalleData.buscarDetalle1(6);
 
  //       DetalleCompra detalle = new DetalleCompra(5, 7, pro);
 
-        Proveedor proveedor3 = new Proveedor();
-        ProveedorData provedat = new ProveedorData();
+//        Proveedor proveedor3 = new Proveedor();
+//        ProveedorData provedat = new ProveedorData();
 
 //        provedat.guardarProveedor(proveedor3);
 
-        CompraData comdat = new CompraData();
+//        CompraData comdat = new CompraData();
 
 //        Compra compra = new Compra(1, proveedor3, LocalDate.now(), detalle);
 
@@ -222,6 +222,15 @@ public class ProveMax74 {
 //        System.out.println("idProveedor - " + comp.getProveedor().getIdProveedor());
 //        System.out.println("idDelalle - " + comp.getDetalleCompra().getIdDetalle());
 //            System.out.println("-----------------");
+//        }
+
+DetalleCompraData  dcd=new DetalleCompraData();
+
+//for (DetalleCompra  det: dcd.listarDetalleCompraPorCompra(1)) {
+//    
+//    System.out.println("Cantidad: "+ det.getCantidad());
+//    System.out.println("Nombre Producto: "+ det.getProducto().getNombreProducto());
+//  
 //        }
 //        
     }
