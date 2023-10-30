@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2023 a las 00:41:14
+-- Tiempo de generación: 30-10-2023 a las 03:50:56
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -66,7 +66,8 @@ CREATE TABLE `detallecompra` (
 
 INSERT INTO `detallecompra` (`idDetalle`, `cantidad`, `precioCosto`, `idProducto`, `idCompra`) VALUES
 (1, 10, 2000, 334, 1),
-(2, 10, 3000, 338, 2);
+(2, 10, 3000, 338, 2),
+(504, 10, 3000, 340, 5);
 
 -- --------------------------------------------------------
 
@@ -169,7 +170,7 @@ ALTER TABLE `compra`
 -- AUTO_INCREMENT de la tabla `detallecompra`
 --
 ALTER TABLE `detallecompra`
-  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=504;
+  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=506;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
