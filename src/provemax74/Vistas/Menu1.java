@@ -9,18 +9,17 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 
 /**
  *
  * @author maria
  */
-public class Menu extends javax.swing.JFrame {
+public class Menu1 extends javax.swing.JFrame {
 
  
-    public Menu() {
+    public Menu1() {
         initComponents();
-        
+
     }
 
     /**
@@ -46,8 +45,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMGDP = new javax.swing.JMenu();
         jMGestionDeProd = new javax.swing.JMenuItem();
-        jMBusquedaDeProd = new javax.swing.JMenuItem();
-        jMProdBajoStock = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMGestionDeProveed = new javax.swing.JMenuItem();
         jM3 = new javax.swing.JMenu();
@@ -71,13 +68,6 @@ public class Menu extends javax.swing.JFrame {
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 738, Short.MAX_VALUE)
-
-            .addGap(0, 1217, Short.MAX_VALUE)
-        );
-        escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 777, Short.MAX_VALUE)
-
         );
 
         jMGDP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/home-appliance.png"))); // NOI18N
@@ -99,26 +89,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMGDP.add(jMGestionDeProd);
-
-        jMBusquedaDeProd.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMBusquedaDeProd.setText("Busqueda de Producto");
-        jMBusquedaDeProd.setMargin(new java.awt.Insets(5, 2, 5, 2));
-        jMBusquedaDeProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMBusquedaDeProdActionPerformed(evt);
-            }
-        });
-        jMGDP.add(jMBusquedaDeProd);
-
-        jMProdBajoStock.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMProdBajoStock.setText("Productos de bajo Stock");
-        jMProdBajoStock.setMargin(new java.awt.Insets(5, 2, 5, 2));
-        jMProdBajoStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMProdBajoStockActionPerformed(evt);
-            }
-        });
-        jMGDP.add(jMProdBajoStock);
 
         jMenuBar1.add(jMGDP);
 
@@ -164,6 +134,11 @@ public class Menu extends javax.swing.JFrame {
         jMGestionDeDetaDeComp.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jMGestionDeDetaDeComp.setText("Gestión de Detalle de Compras");
         jMGestionDeDetaDeComp.setMargin(new java.awt.Insets(4, 2, 4, 2));
+        jMGestionDeDetaDeComp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMGestionDeDetaDeCompActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMGestionDeDetaDeComp);
 
         jMenuBar1.add(jMenu1);
@@ -237,18 +212,6 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMProdBajoStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProdBajoStockActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
-        ProductosDeBajoStock pbs = new ProductosDeBajoStock();
-        pbs.setVisible(true);
-        escritorio.add(pbs);
-        pbs.getContentPane().setBackground(new Color(131, 193, 227));
-        escritorio.moveToFront(pbs);
-
-    }//GEN-LAST:event_jMProdBajoStockActionPerformed
-
     private void jMGestionDeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestionDeProdActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
@@ -279,28 +242,7 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMGestionDeProveedActionPerformed
 
-    private void jMBusquedaDeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBusquedaDeProdActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
-        BusquedaDeProducto bdp = new BusquedaDeProducto();
-        bdp.setVisible(true); 
-        bdp.getContentPane().setBackground(new Color(131,193,227));
-        escritorio.add(bdp);
-        escritorio.moveToFront(bdp);
-                
-    }//GEN-LAST:event_jMBusquedaDeProdActionPerformed
-
     private void jMBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBCActionPerformed
-
-
-
-        escritorio.removeAll();
-        escritorio.repaint();
-        BuscarComprasPorProveedor gdp = new  BuscarComprasPorProveedor();
-        gdp.setVisible(true);
-        escritorio.add(gdp);
-        escritorio.moveToFront(gdp);
 
     }//GEN-LAST:event_jMBCActionPerformed
 
@@ -311,7 +253,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMProductosCompradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProductosCompradosActionPerformed
         // TODO add your handling code here:
-
         
         escritorio.removeAll();
         escritorio.repaint();
@@ -362,15 +303,17 @@ public class Menu extends javax.swing.JFrame {
         escritorio.moveToFront(pbs);
     }//GEN-LAST:event_jMProdDebajoStockMinActionPerformed
 
+    private void jMGestionDeDetaDeCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestionDeDetaDeCompActionPerformed
+        // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        GestionDeDetalle gdd = new  GestionDeDetalle();
+        GestionDeDetalle gdd = new GestionDeDetalle();
         gdd.setVisible(true);
         escritorio.add(gdd);
+        gdd.getContentPane().setBackground(new Color(131, 193, 227));
         escritorio.moveToFront(gdd);
         
-    }//GEN-LAST:event_jMGDCActionPerformed
-
+    }//GEN-LAST:event_jMGestionDeDetaDeCompActionPerformed
 
 
     /**
@@ -390,20 +333,21 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new Menu1().setVisible(true);
             }
         });
     }
@@ -411,14 +355,12 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jM3;
-    private javax.swing.JMenuItem jMBusquedaDeProd;
     private javax.swing.JMenuItem jMCompraAproveed;
     private javax.swing.JMenu jMGDP;
     private javax.swing.JMenuItem jMGestionDeComp;
     private javax.swing.JMenuItem jMGestionDeDetaDeComp;
     private javax.swing.JMenuItem jMGestionDeProd;
     private javax.swing.JMenuItem jMGestionDeProveed;
-    private javax.swing.JMenuItem jMProdBajoStock;
     private javax.swing.JMenuItem jMProdDebajoStockMin;
     private javax.swing.JMenuItem jMProductosComprados;
     private javax.swing.JMenu jMSalir;

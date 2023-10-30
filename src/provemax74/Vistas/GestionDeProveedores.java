@@ -30,6 +30,7 @@ public class GestionDeProveedores extends javax.swing.JInternalFrame {
     public GestionDeProveedores() {
         initComponents();
         armarCabecera();
+        noEditable1();
         refrescarTablaDeProveedores();
         jPanel1.setBackground(new Color(131, 193, 227));
     }

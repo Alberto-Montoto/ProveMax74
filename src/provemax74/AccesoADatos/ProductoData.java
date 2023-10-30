@@ -22,6 +22,8 @@ import provemax74.Entidades.Proveedor;
 import provemax74.Entidades.Compra;
 
 public class ProductoData {
+    
+
 
 //    private Connection con = null;
 //
@@ -540,6 +542,8 @@ public class ProductoData {
         return productosComprados;
     }
 
+    
+    
     
     public List<Producto> listarProductosEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) {
     // Crear la consulta SQL

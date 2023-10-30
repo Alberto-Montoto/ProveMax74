@@ -363,7 +363,7 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
             int filasS = jTabla.getSelectedRow();
 
 
-        int filasS = jTabla.getSelectedRow();
+       
 
         if (filasS != -1) {
         String nombreProducto = (String) model.getValueAt(filasS, 0);

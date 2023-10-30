@@ -51,10 +51,11 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
     };
    
         armarCabeceraTabla();
-        jTproductos.getColumnModel().getColumn(1).setPreferredWidth(230); //Para agrandar el ancho de columan de nombre de producto
-        jTproductos.getColumnModel().getColumn(2).setPreferredWidth(200); //Para agrandar el ancho de columan de descripcion
-        jTproductos.getColumnModel().getColumn(3).setPreferredWidth(200); //Para agrandar el ancho de columan de precio
-        jTproductos.getColumnModel().getColumn(5).setPreferredWidth(100); //Para agrandar el ancho de columan de estado
+        jTproductos.getColumnModel().getColumn(0).setPreferredWidth(200); //Para agrandar el ancho de columan de nombre de producto
+        jTproductos.getColumnModel().getColumn(1).setPreferredWidth(200); //Para agrandar el ancho de columan de descripcion
+        jTproductos.getColumnModel().getColumn(2).setPreferredWidth(200); //Para agrandar el ancho de columan de Precio Unitario
+        jTproductos.getColumnModel().getColumn(3).setPreferredWidth(200); //Para agrandar el ancho de columan de cantidad
+//        jTproductos.getColumnModel().getColumn(5).setPreferredWidth(100); //Para agrandar el ancho de columan de estado
        
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
             //centerRenderer.setFont(centerRenderer.getFont().deriveFont(Font.BOLD));
@@ -295,12 +296,12 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
 
     private void armarCabeceraTabla(){
         ArrayList<Object> filaCabecera=new ArrayList<>();
-        filaCabecera.add("ID");
-        filaCabecera.add("Nombre de Producto");
+        filaCabecera.add("Producto");
         filaCabecera.add("Descripcion");
         filaCabecera.add("Precio Unitario");
-        filaCabecera.add("Stock");
-        filaCabecera.add("Estado");
+        filaCabecera.add("Cantidad");
+//        filaCabecera.add("Stock");
+//        filaCabecera.add("Estado");
         for (Object it : filaCabecera) {
             modelo.addColumn(it);
             jTproductos.setModel(modelo);
@@ -351,7 +352,7 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
                     for (Producto producto : listaProd) {
 
                         modelo.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
-                         producto.getPrecioActual(), prodData.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2).values()});
+                         producto.getPrecioActual(), prodData.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2).values().stream().mapToInt(Integer::intValue).sum()});
                         
                           jTproductos.setDefaultRenderer(Object.class, centerRenderer); //para centrar los valores en las celdas de la tabla
 
