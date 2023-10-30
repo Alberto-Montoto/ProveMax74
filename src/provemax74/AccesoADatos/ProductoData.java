@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -617,6 +618,7 @@ public class ProductoData {
 
 }
     
+
       public List<Producto> obtenerProductosCompradosPorFecha(LocalDate fecha)  {
      
         List<Producto> productosCompradosPorFecha = new ArrayList<>();
@@ -655,5 +657,99 @@ public class ProductoData {
     }
     
     
+
+    public TreeSet<Producto> listaDeProductos() {
+
+        String sql = "SELECT idProducto, nombreProducto, descripcion, precioActual, stock FROM producto ";
+        TreeSet<Producto> productos = new TreeSet<>();
+
+        try {
+            PreparedStatement ps;
+            ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+
+                productos.add(producto);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto");
+        }
+        return productos;
+
+    }
+    
+    public void actualizarStockMenos(int cantidad, String nombreProducto, String descripcion, double precioActual, int stock) {
+    String sql = "UPDATE Producto SET stock = stock - ? WHERE nombreProducto = ?";
+    
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, cantidad);
+        ps.setString(2, nombreProducto);
+        ps.executeUpdate();
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar el stock del producto");
+    }
+    
+}
+
+    public void actualizarStockMas(double cantidad, String nombreProducto) {
+    String sql = "UPDATE Producto SET stock = stock + ? WHERE nombreProducto = ?";
+    
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setDouble(1, cantidad);
+        ps.setString(2, nombreProducto);
+        ps.executeUpdate();
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar el stock del producto");
+    }
+    
+    }
+    
+    
+    public Producto obtenerProductoPorNombre(String nombreProducto, String descripcion, double precioActual) {
+    String sql = "SELECT idProducto, nombreProducto, descripcion, precioActual, stock FROM producto WHERE nombreProducto = ? AND descripcion = ? AND precioActual = ?";
+    Producto producto = null;
+    
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, nombreProducto);
+        ps.setString(2, descripcion);
+        ps.setDouble(3, precioActual);
+        
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            producto = new Producto();
+            producto.setIdProducto(rs.getInt("idProducto"));
+            producto.setNombreProducto(rs.getString("nombreProducto"));
+            producto.setDescripcion(rs.getString("descripcion"));
+            producto.setPrecioActual(rs.getDouble("precioActual"));
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe un producto con los criterios especificados.");
+        }
+        
+        ps.close();
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla producto desde obtenerProducto.");
+    }
+    
+    return producto;
+}
+
+
 }
 

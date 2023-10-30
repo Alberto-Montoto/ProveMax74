@@ -71,6 +71,13 @@ public class Menu extends javax.swing.JFrame {
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 738, Short.MAX_VALUE)
+
+            .addGap(0, 1217, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 777, Short.MAX_VALUE)
+
         );
 
         jMGDP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/home-appliance.png"))); // NOI18N
@@ -286,6 +293,15 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBCActionPerformed
 
+
+
+        escritorio.removeAll();
+        escritorio.repaint();
+        BuscarComprasPorProveedor gdp = new  BuscarComprasPorProveedor();
+        gdp.setVisible(true);
+        escritorio.add(gdp);
+        escritorio.moveToFront(gdp);
+
     }//GEN-LAST:event_jMBCActionPerformed
 
 
@@ -295,6 +311,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMProductosCompradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProductosCompradosActionPerformed
         // TODO add your handling code here:
+
         
         escritorio.removeAll();
         escritorio.repaint();
@@ -344,6 +361,16 @@ public class Menu extends javax.swing.JFrame {
         pbs.getContentPane().setBackground(new Color(131, 193, 227));
         escritorio.moveToFront(pbs);
     }//GEN-LAST:event_jMProdDebajoStockMinActionPerformed
+
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionDeDetalle gdd = new  GestionDeDetalle();
+        gdd.setVisible(true);
+        escritorio.add(gdd);
+        escritorio.moveToFront(gdd);
+        
+    }//GEN-LAST:event_jMGDCActionPerformed
+
 
 
     /**

@@ -226,7 +226,35 @@ public int obtenerIdProveedorPorRazonSocial(String razonSocial) {
     return idProveedor;
 }
 
-    
+     public Proveedor buscarProveedorPorId(int id) {
+        
+        String sql="SELECT idProveedor FROM proveedor WHERE idProveedor=?";
+        
+        Proveedor proveedor=null;
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+             
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                
+                proveedor =new Proveedor();
+                
+                proveedor.setIdProveedor(id);
+
+            }
+            
+            ps.close();   
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedor" + ex.getMessage());
+        }
+        
+        return proveedor;
+    }
   
 }  
 

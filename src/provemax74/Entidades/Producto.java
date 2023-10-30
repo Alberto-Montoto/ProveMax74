@@ -1,6 +1,6 @@
 package provemax74.Entidades;
 
-public class Producto {
+public class Producto implements Comparable<Producto> {
 
     private int idProducto;
 
@@ -88,4 +88,11 @@ public class Producto {
     public String toString() {
         return "Producto{" + "idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + ", descripcion=" + descripcion + ", precioActual=" + precioActual + ", stock=" + stock + ", estado=" + estado +'}';
     }
+
+    @Override    
+    public int compareTo(Producto otroProducto) {
+        // Comparar productos por nombre
+        return this.nombreProducto.compareTo(otroProducto.getNombreProducto());
+    }
+
 }

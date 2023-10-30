@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import jdk.nashorn.internal.ir.ContinueNode;
 import jdk.nashorn.internal.objects.Global;
 import provemax74.AccesoADatos.CompraData;
+import provemax74.AccesoADatos.DetalleCompraData;
 import provemax74.AccesoADatos.ProductoData;
 import provemax74.Entidades.Compra;
 import provemax74.Entidades.DetalleCompra;
@@ -38,6 +39,7 @@ public class BusquedaDeProducto extends javax.swing.JInternalFrame {
     ProductoData prodDat = new ProductoData();
     CompraData compDat = new CompraData();
     DetalleCompra detaComp = new DetalleCompra();
+    DetalleCompraData dcd = new DetalleCompraData();
     DefaultTableModel model = new DefaultTableModel() {
 
         @Override
@@ -538,26 +540,36 @@ public class BusquedaDeProducto extends javax.swing.JInternalFrame {
 //                System.out.println("fecha 1: " + fecha1);
 //                System.out.println("fecha 2: " + fecha2);
                 List<Producto> productos = prodDat.listarProductosEntreFechas(fecha1, fecha2);
+                List<DetalleCompra> detalle = dcd.listarDetalleCompra();
 //            System.out.println("tamaño" + productos.size());
                 if (fecha2.isBefore(fecha1)) {
                     // La fecha 2 es anterior a la fecha 1, muestra una advertencia.
                     JOptionPane.showMessageDialog(null, "La segunda fecha no puede ser anterior a la primera fecha.", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 } else {
 
-                for (Producto producto : productos) {
-                    
-//                    Map<Integer, Integer> productosComprados = prodDat.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2);
-                    
-                    model.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
-                        producto.getPrecioActual(), prodDat.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2).values()});
+//                for (Producto producto : productos) {
+//                    
+////                    Map<Integer, Integer> productosComprados = prodDat.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2);
+//                    
+//                    model.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
+//                        producto.getPrecioActual(), prodDat.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2).values()});
 //                    for (Producto producto : productos) {
 //                        Map<Integer, Integer> productosComprados = prodDat.sumarCantidadProductosCompradosEntreFechas(fecha1, fecha2);
 //                        int cantidadComprada = productosComprados.get(producto.getIdProducto()); // Obtener la cantidad comprada para este producto
 //
-//                        model.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(), producto.getPrecioActual(), cantidadComprada});
-                    }
 
+//            List<DetalleCompra> detalle = detaComp.getCantidad();
+                    for (Producto producto : productos) {
+                        
+//                        model.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
+//                            producto.getPrecioActual(), detaComp.getCantidad()});
+                        model.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
+                            producto.getPrecioActual(), detaComp.getCantidad() });
+
+                    }
                 }
+
+                
             
                 
             
@@ -580,11 +592,7 @@ public class BusquedaDeProducto extends javax.swing.JInternalFrame {
 //                List<Producto> productos = prodDat.listarProductosPorFecha();
 ////            System.out.println("tamaño" + productos.size());
 //
-//                for (Producto producto : productos) {
-//
-//                    model.addRow(new Object[]{producto.getNombreProducto(), producto.getDescripcion(),
-//                        producto.getPrecioActual(), detaComp.getCantidad()});
-//                }
+
 //            }
             
             

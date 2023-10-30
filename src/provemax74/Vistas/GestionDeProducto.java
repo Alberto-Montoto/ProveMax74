@@ -326,7 +326,7 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
         model.removeRow(filasS);
 
         }else{
-            JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna fila");
+        JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna fila");
         }
         limpiarCampos();
         noEditable();
@@ -359,7 +359,12 @@ public class GestionDeProducto extends javax.swing.JInternalFrame {
 //            prodDat.agregarProductoSinID(produ);
             
             model.addRow(new Object[]{producto, descripcion, precio, stock, estadoStr});
+
             int filasS = jTabla.getSelectedRow();
+
+
+        int filasS = jTabla.getSelectedRow();
+
         if (filasS != -1) {
         String nombreProducto = (String) model.getValueAt(filasS, 0);
         

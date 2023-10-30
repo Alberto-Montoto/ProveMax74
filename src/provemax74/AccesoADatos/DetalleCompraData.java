@@ -41,15 +41,14 @@ public class DetalleCompraData {
     
     //Guardar Detalle
     public void guardarDetalle(DetalleCompra detalle){
-        String sql =  "INSERT INTO detallecompra (cantidad, precioCosto, nombreProducto, idProducto)"//
+        String sql =  "INSERT INTO detallecompra (cantidad, precioCosto, idProducto, idCompra)"//
                 + "VALUES (?,?,?,?)";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setInt(1, detalle.getCantidad());
             ps.setDouble(2, detalle.getPrecioCosto()* detalle.getCantidad());
-//            JOptionPane.showMessageDialog(null, detalle.getNombreProducto());
-            ps.setString(3, detalle.getNombreProducto());
+            ps.setInt(3, detalle.getIdProducto());
             ps.setInt(4, detalle.getIdProducto());
             ps.executeUpdate();
             
@@ -158,6 +157,7 @@ public class DetalleCompraData {
     }
     
    
+
     
     
 //    public void modificarDetalle(int idDetalleCompra, int nuevaCantidad, double nuevoPrecio, int nuevoIdProducto, String nuevoNombre) {
@@ -272,11 +272,44 @@ public List<DetalleCompra> listarDetalleCompraPorProveedor(int idProveedor) {
 
     return detalles;
 }
+
+public void guardarDetalleVista(DetalleCompra detalle){
+        String sql =  "INSERT INTO detallecompra (cantidad, precioCosto, nombreProducto, idProducto)"//
+                + "VALUES (?,?,?,?)";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, detalle.getCantidad());
+            ps.setDouble(2, detalle.getPrecioCosto()* detalle.getCantidad());
+//            JOptionPane.showMessageDialog(null, detalle.getNombreProducto());
+            ps.setString(3, detalle.getNombreProducto());
+            ps.setInt(4, detalle.getIdProducto());
+            ps.executeUpdate();
+            
+            ResultSet rs =  ps.getGeneratedKeys();
+            
+            if (rs.next()) {
+                detalle.setIdDetalle(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Detalle agregado");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla DetalleCompra");
+        }
+    }
+    
+    
+    
+    
+    
+    
+
     
     
     public List<DetalleCompra> listarDetalleCompra(){
         
-        String sql = "SELECT idDetalle, cantidad, precioCosto, codigo FROM detalleCompra WHERE estado = 1";
+        String sql = "SELECT idDetalle, cantidad, precioCosto FROM detalleCompra ";
         ArrayList<DetalleCompra> detalleCompras=new ArrayList<>();
         
         try {
@@ -337,5 +370,59 @@ public List<DetalleCompra> listarDetalleCompraPorCompra(int idCompra) {
     return detalles;
 }
    
+//    public void cargarDetalle(Double cantidad, double precioCosto, int idProducto, int idCompra) {
+//        String sql = "INSERT INTO DetalleCompra (cantidad, precioCosto, idProducto, idCompra) VALUES (?, ?, ?, ?)";
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            ps.setDouble(1, cantidad);
+//            ps.setDouble(2, precioCosto);
+//            ps.setInt(3, idProducto); // Sustituye idProducto con el valor correspondiente
+//            ps.setInt(4, idCompra); // Sustituye idCompra con el valor correspondiente
+//            ps.executeUpdate();
+//
+//            // Obtener el ID autogenerado si es necesario
+//            ResultSet generatedKeys = ps.getGeneratedKeys();
+//            if (generatedKeys.next()) {
+//                int idDetalleGenerado = generatedKeys.getInt(1);
+//                System.out.println("ID de detalle generado: " + idDetalleGenerado);
+//            }
+//
+//            ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al insertar en la tabla DetalleCompra");
+//        }
+//
+//    }
     
+    
+    
+    public void cargarDetalle(Double cantidad, double precioCosto, int idProducto, int idCompra) {
+    String sql = "INSERT INTO DetalleCompra (cantidad, precioCosto, idProducto, idCompra) VALUES (?, ?, ?, ?)";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setDouble(1, cantidad);
+        ps.setDouble(2, precioCosto);
+        ps.setInt(3, idProducto);
+        ps.setInt(4, idCompra);
+        
+        // Registro de la consulta SQL antes de la ejecución
+        System.out.println("Consulta SQL: " + ps.toString());
+
+        int filasAfectadas = ps.executeUpdate();
+
+        // Verificar si la consulta de inserción fue exitosa
+        if (filasAfectadas > 0) {
+            System.out.println("DetalleCompra insertado correctamente.");
+        } else {
+            System.out.println("Error al insertar en DetalleCompra.");
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        ex.printStackTrace(); // Registrar la traza de la excepción
+        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+    }
+}
 }
