@@ -5,9 +5,6 @@
  */
 package provemax74.Vistas;
 
-
-import java.awt.Color;
-
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -29,7 +26,6 @@ import provemax74.AccesoADatos.ProveedorData;
 import provemax74.Entidades.Compra;
 import provemax74.Entidades.Producto;
 import provemax74.Entidades.Proveedor;
-
 
 /**
  *
@@ -66,9 +62,6 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
 
     public GestionDeDetalle() {
         initComponents();
-
-        jPanel1.setBackground(new Color(131, 193, 227));
-
         armarCabecera();
         armarCabecera2();
         // Obtener la fecha actual
@@ -92,7 +85,6 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
 
         // Muestra la suma total en un JLabel
         jLTotal.setText(String.format("%.2f", sumaTotal)); // Formatea el número con dos decimales
-
 
     }
 
@@ -126,13 +118,10 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
         jBContinuar = new javax.swing.JButton();
         jLTotal = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Detalle de Compra");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setText("Producto:");
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel3.setText("Cantidad:");
 
         jLabel4.setText("Costo total:  $");
@@ -164,7 +153,6 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTCompra);
 
-        jBAgregar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jBAgregar.setText("Agregar");
         jBAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -177,7 +165,6 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
             }
         });
 
-        jBEliminar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +172,6 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
             }
         });
 
-        jBFinalizar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jBFinalizar.setText("Finalizar Compra");
         jBFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +179,6 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel5.setText("Fecha de Compra:");
 
         jTablaProductos.setModel(new javax.swing.table.DefaultTableModel(
@@ -229,45 +214,6 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(320, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-						 .addComponent(jTTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(377, 377, 377))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jBAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBFinalizar)
-                        .addGap(411, 411, 411))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(307, 307, 307))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(109, 109, 109)
-                                    .addComponent(jTProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(175, 175, 175)
-                                    .addComponent(jLabel1))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel5))
-                                    .addGap(42, 42, 42)
-                                    .addComponent(jTCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(459, 459, 459)))))
-
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -317,42 +263,10 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
-
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jTCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-				.addComponent(jTTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBAgregar)
-                    .addComponent(jBEliminar)
-                    .addComponent(jBFinalizar))
-                .addGap(67, 67, 67))
-
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
@@ -389,7 +303,6 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
                         .addComponent(jBFinalizar)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(127, Short.MAX_VALUE))
-
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -481,7 +394,7 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
                 // Muestra un mensaje de error si el valor ingresado es mayor
                 JOptionPane.showMessageDialog(null, "El valor ingresado supera el stock dispoible", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (DateTimeParseException ex) {
+        } catch (DateTimeParseException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Error en los datos de entrada");
         }
 
@@ -624,7 +537,7 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Debes seleccionar una fila para eliminar por fecha.");
         }
-
+        jLTotal.setText("");
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFinalizarActionPerformed
@@ -688,15 +601,7 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
        JOptionPane.showMessageDialog(this, "Su detalle se ha cargado");
     }
        
-
-       
-       
-
-//cantidad	
-//precioCosto	
-//idProducto	
-//idCompra
-    
+    borrarFilaCompra();
     }//GEN-LAST:event_jBFinalizarActionPerformed
 
     private void armarCabecera() {
@@ -722,8 +627,16 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
             model.removeRow(f);
         }
     }
+    private void borrarFilaCompra() {
+        int fila = jTCompra.getRowCount() - 1;
+        for (int f = fila; f >= 0; f--) {
+
+            model.removeRow(f);
+        }
+    }
 
     private void restarValorEliminado(DefaultTableModel model, int filaEliminada) {
+        if (filaEliminada >= 0 && filaEliminada < model.getRowCount()) {
         String totalStr = model.getValueAt(filaEliminada, 3).toString();
         totalStr = totalStr.replace(",", "."); // Reemplaza la coma por un punto si es necesario
         try {
@@ -735,6 +648,7 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
             // Maneja valores no válidos o errores de conversión
             JOptionPane.showMessageDialog(this, "El valor en la fila " + (filaEliminada + 1) + " no es un número válido.");
         }
+    }
     }
 
 
