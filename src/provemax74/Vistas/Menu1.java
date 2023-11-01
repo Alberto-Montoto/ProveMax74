@@ -47,8 +47,6 @@ public class Menu1 extends javax.swing.JFrame {
         jMGestionDeProd = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMGestionDeProveed = new javax.swing.JMenuItem();
-        jM3 = new javax.swing.JMenu();
-        jMGestionDeComp = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMGestionDeDetaDeComp = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -109,25 +107,8 @@ public class Menu1 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jM3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/anadir-al-carrito (1).png"))); // NOI18N
-        jM3.setText("  Compra  ");
-        jM3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jM3.setMargin(new java.awt.Insets(5, 2, 5, 2));
-        jM3.setPreferredSize(new java.awt.Dimension(200, 60));
-
-        jMGestionDeComp.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jMGestionDeComp.setText("Gestión de Compras");
-        jMGestionDeComp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGestionDeCompActionPerformed(evt);
-            }
-        });
-        jM3.add(jMGestionDeComp);
-
-        jMenuBar1.add(jM3);
-
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/dueno-de-la-tienda.png"))); // NOI18N
-        jMenu1.setText("Detalle");
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/anadir-al-carrito (1).png"))); // NOI18N
+        jMenu1.setText("Compras");
         jMenu1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jMenu1.setPreferredSize(new java.awt.Dimension(200, 60));
 
@@ -247,10 +228,6 @@ public class Menu1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jMBCActionPerformed
 
 
-    private void jMGestionDeCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGestionDeCompActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMGestionDeCompActionPerformed
-
     private void jMProductosCompradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProductosCompradosActionPerformed
         // TODO add your handling code here:
         
@@ -310,7 +287,7 @@ public class Menu1 extends javax.swing.JFrame {
         GestionDeDetalle gdd = new GestionDeDetalle();
         gdd.setVisible(true);
         escritorio.add(gdd);
-        gdd.getContentPane().setBackground(new Color(131, 193, 227));
+       // gdd.getContentPane().setBackground(new Color(131, 193, 227));
         escritorio.moveToFront(gdd);
         
     }//GEN-LAST:event_jMGestionDeDetaDeCompActionPerformed
@@ -354,10 +331,8 @@ public class Menu1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenu jM3;
     private javax.swing.JMenuItem jMCompraAproveed;
     private javax.swing.JMenu jMGDP;
-    private javax.swing.JMenuItem jMGestionDeComp;
     private javax.swing.JMenuItem jMGestionDeDetaDeComp;
     private javax.swing.JMenuItem jMGestionDeProd;
     private javax.swing.JMenuItem jMGestionDeProveed;
