@@ -135,7 +135,7 @@ public class GestionDeDetalle extends javax.swing.JInternalFrame {
         jLTotal = new javax.swing.JLabel();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(1212, 738));
+        setPreferredSize(new java.awt.Dimension(1200, 738));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1220, 700));
 
