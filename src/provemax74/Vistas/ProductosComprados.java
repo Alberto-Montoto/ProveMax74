@@ -6,9 +6,11 @@
 package provemax74.Vistas;
 
 import java.awt.Font;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -16,6 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import provemax74.AccesoADatos.DetalleCompraData;
 import provemax74.AccesoADatos.ProductoData;
 import provemax74.Entidades.Producto;
 
@@ -30,6 +33,7 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
     private List <Producto> listaProd;
     private ProductoData prodData;
     private Producto prod;
+    DetalleCompraData detData = new DetalleCompraData();
 
     private DefaultTableModel modelo;
     DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -110,6 +114,11 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         buttonGroup1.add(jRBporFecha);
         jRBporFecha.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jRBporFecha.setText("Por fecha:");
+        jRBporFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBporFechaActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRBentreFechas);
         jRBentreFechas.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -123,6 +132,11 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         buttonGroup1.add(jRBultimaComp);
         jRBultimaComp.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jRBultimaComp.setText("Última compra");
+        jRBultimaComp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBultimaCompActionPerformed(evt);
+            }
+        });
 
         jTproductos.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jTproductos.setModel(new javax.swing.table.DefaultTableModel(
@@ -143,7 +157,7 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
             }
         ));
         jTproductos.setIntercellSpacing(new java.awt.Dimension(5, 5));
-        jTproductos.setPreferredSize(new java.awt.Dimension(100, 100));
+        jTproductos.setPreferredSize(new java.awt.Dimension(100, 200));
         jTproductos.setRowHeight(30);
         jScrollPane1.setViewportView(jTproductos);
         if (jTproductos.getColumnModel().getColumnCount() > 0) {
@@ -178,10 +192,13 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
             }
         });
 
+        jDC1.setEnabled(false);
         jDC1.setPreferredSize(new java.awt.Dimension(200, 30));
 
+        jDCfecha.setEnabled(false);
         jDCfecha.setPreferredSize(new java.awt.Dimension(200, 30));
 
+        jDC2.setEnabled(false);
         jDC2.setPreferredSize(new java.awt.Dimension(200, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -261,6 +278,8 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
 
     private void jRBentreFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBentreFechasActionPerformed
         // TODO add your handling code here:
+        activar2();
+        borrarFilas();
     }//GEN-LAST:event_jRBentreFechasActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
@@ -288,11 +307,41 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
         jDC2.setDate(null);
 
     }//GEN-LAST:event_jBlimpiarActionPerformed
-
+    
+    private void activar1(){
+        jDCfecha.setEnabled(true);
+        jDC1.setEnabled(false);
+        jDC2.setEnabled(false);
+    }
+    
+    private void activar2(){
+        jDC1.setEnabled(true);
+        jDC2.setEnabled(true);
+        jDCfecha.setEnabled(false);
+    }
+    
+    private void activar3(){
+        jDC1.setEnabled(false);
+        jDC2.setEnabled(false);
+        jDCfecha.setEnabled(false);
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRBporFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBporFechaActionPerformed
+        // TODO add your handling code here:
+        activar1();
+        borrarFilas();
+    }//GEN-LAST:event_jRBporFechaActionPerformed
+
+    private void jRBultimaCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBultimaCompActionPerformed
+        // TODO add your handling code here:
+        activar3();
+        borrarFilas();
+    }//GEN-LAST:event_jRBultimaCompActionPerformed
 
     private void armarCabeceraTabla(){
         ArrayList<Object> filaCabecera=new ArrayList<>();
@@ -322,10 +371,10 @@ public class ProductosComprados extends javax.swing.JInternalFrame {
          LocalDate fecha = jDCfecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
          listaProd = prodData.obtenerProductosCompradosPorFecha(fecha);
-
+        
          for (Producto p : listaProd) {
 
-             modelo.addRow(new Object[]{p.getIdProducto(), p.getNombreProducto(), p.getDescripcion(), p.getPrecioActual(), p.getStock(), p.estado()});
+             modelo.addRow(new Object[]{ p.getNombreProducto(), p.getDescripcion(), p.getPrecioActual(), p.getStock(), p.estado()});
              jTproductos.setDefaultRenderer(Object.class, centerRenderer); //para centrar los valores en las celdas de la tabla
         }
     }
