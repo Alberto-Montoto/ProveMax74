@@ -63,6 +63,7 @@ public class ProductosDeBajoStock extends javax.swing.JInternalFrame {
         jTabla = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(1212, 738));
 
         jTabla.setModel(new javax.swing.table.DefaultTableModel(

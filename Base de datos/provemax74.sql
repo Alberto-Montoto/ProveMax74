@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2023 a las 03:50:56
+-- Tiempo de generación: 01-11-2023 a las 22:21:52
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -44,7 +44,8 @@ INSERT INTO `compra` (`idCompra`, `fecha`, `idProveedor`) VALUES
 (2, '2023-10-18', 6),
 (3, '2023-10-17', 7),
 (4, '2023-10-16', 8),
-(5, '2023-10-15', 5);
+(5, '2023-10-15', 5),
+(6, '2023-11-01', 8);
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,11 @@ CREATE TABLE `detallecompra` (
 INSERT INTO `detallecompra` (`idDetalle`, `cantidad`, `precioCosto`, `idProducto`, `idCompra`) VALUES
 (1, 10, 2000, 334, 1),
 (2, 10, 3000, 338, 2),
-(504, 10, 3000, 340, 5);
+(504, 10, 3000, 340, 5),
+(506, 20, 2000, 342, 2),
+(507, 30, 9000, 338, 3),
+(508, 15, 3000, 341, 4),
+(509, 25, 7500, 335, 6);
 
 -- --------------------------------------------------------
 
@@ -164,13 +169,13 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `detallecompra`
 --
 ALTER TABLE `detallecompra`
-  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=506;
+  MODIFY `idDetalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=510;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
